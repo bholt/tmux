@@ -12,12 +12,12 @@
 *.a
 
 # Autoconf
-configure
-Makefile
-Makefile.in
-aclocal.m4
-config.log
-config.status
+# configure
+# Makefile
+# Makefile.in
+# aclocal.m4
+# config.log
+# config.status
 
 # tmux-specific
 tmux
