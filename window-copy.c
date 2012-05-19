@@ -837,8 +837,8 @@ window_copy_mouse(
 		} else if ((m->b & MOUSE_BUTTON) == MOUSE_2) {
 			for (i = 0; i < 5; i++)
 				window_copy_cursor_down(wp, 0);
-			if (data->oy == 0)
-				goto reset_mode;
+			/*if (old_cy == data->cy)
+				goto reset_mode;*/
 		}
 		return;
 	}
