@@ -10,3 +10,17 @@
 *.lai
 *.la
 *.a
+
+# Autoconf
+configure
+Makefile
+Makefile.in
+aclocal.m4
+config.log
+config.status
+
+# tmux-specific
+tmux
+tmux.1
+.deps
+
