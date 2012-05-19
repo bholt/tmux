@@ -852,8 +852,8 @@ window_copy_mouse(
 			for (i = 0; i < 4; i++)
 				window_copy_cursor_down(wp, 0);
 
-			if (data->oy == 0)
-				goto reset_mode;
+			/*if (old_cy == data->cy)
+				goto reset_mode;*/
 		}
 		return;
 	}
