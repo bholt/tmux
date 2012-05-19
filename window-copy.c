@@ -822,7 +822,7 @@ window_copy_mouse(
 {
 	struct window_copy_mode_data	*data = wp->modedata;
 	struct screen			*s = &data->screen;
-	u_int				 i;
+	u_int				 i, old_cy;
 
 	if (m->x >= screen_size_x(s))
 		return;
@@ -832,13 +832,28 @@ window_copy_mouse(
 	/* If mouse wheel (buttons 4 and 5), scroll. */
 	if ((m->b & MOUSE_45)) {
 		if ((m->b & MOUSE_BUTTON) == MOUSE_1) {
-			for (i = 0; i < 5; i++)
+			/* move cursor to top of window, then do scroll*/
+			do {
+				old_cy = data->cy;
 				window_copy_cursor_up(wp, 0);
+			} while (old_cy != data->cy);
+			
+			for (i = 0; i < 4; i++)
+				window_copy_cursor_up(wp, 0);
+
 		} else if ((m->b & MOUSE_BUTTON) == MOUSE_2) {
-			for (i = 0; i < 5; i++)
+			/* move cursor to bottom of window, then do scroll*/
+			do {
+				old_cy = data->cy;
 				window_copy_cursor_down(wp, 0);
-			/*if (old_cy == data->cy)
-				goto reset_mode;*/
+			} while (old_cy != data->cy);
+
+			old_cy = data->cy;
+			for (i = 0; i < 4; i++)
+				window_copy_cursor_down(wp, 0);
+			
+			if (data->oy == 0)
+				goto reset_mode;
 		}
 		return;
 	}
