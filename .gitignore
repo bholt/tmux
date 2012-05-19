@@ -21,6 +21,5 @@
 
 # tmux-specific
 tmux
-tmux.1
 .deps
 
