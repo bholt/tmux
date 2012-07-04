@@ -1,4 +1,4 @@
-/* $Id: status.c 2663 2012-01-20 21:20:35Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -58,6 +58,20 @@ int
 status_out_cmp(struct status_out *so1, struct status_out *so2)
 {
 	return (strcmp(so1->cmd, so2->cmd));
+}
+
+/* Get screen line of status line. -1 means off. */
+int
+status_at_line(struct client *c)
+{
+	struct session	*s = c->session;
+
+	if (!options_get_number(&s->options, "status"))
+		return (-1);
+
+	if (options_get_number(&s->options, "status-position") == 0)
+		return (0);
+	return (c->tty.sy - 1);
 }
 
 /* Retrieve options for left string. */
@@ -462,12 +476,13 @@ do_replace:
 		ptrlen = limit;
 
 	if (*optr + ptrlen >= out + outsize - 1)
-		return;
+		goto out;
 	while (ptrlen > 0 && *ptr != '\0') {
 		*(*optr)++ = *ptr++;
 		ptrlen--;
 	}
 
+out:
 	if (freeptr != NULL)
 		xfree(freeptr);
 	return;
@@ -490,9 +505,10 @@ status_replace(struct client *c, struct session *s, struct winlink *wl,
 {
 	static char	out[BUFSIZ];
 	char		in[BUFSIZ], ch, *iptr, *optr;
+	size_t		len;
 
-	strftime(in, sizeof in, fmt, localtime(&t));
-	in[(sizeof in) - 1] = '\0';
+	len = strftime(in, sizeof in, fmt, localtime(&t));
+	in[len] = '\0';
 
 	iptr = in;
 	optr = out;
@@ -519,7 +535,7 @@ char *
 status_find_job(struct client *c, char **iptr)
 {
 	struct status_out	*so, so_find;
-	char   			*cmd;
+	char			*cmd;
 	int			 lastesc;
 	size_t			 len;
 
@@ -658,7 +674,7 @@ status_print(
 	struct options	*oo = &wl->window->options;
 	struct session	*s = c->session;
 	const char	*fmt;
-	char   		*text;
+	char		*text;
 	u_char		 fg, bg, attr;
 
 	fg = options_get_number(oo, "window-status-fg");
@@ -800,8 +816,8 @@ status_message_redraw(struct client *c)
 {
 	struct screen_write_ctx		ctx;
 	struct session		       *s = c->session;
-	struct screen		        old_status;
-	size_t			        len;
+	struct screen			old_status;
+	size_t				len;
 	struct grid_cell		gc;
 	int				utf8flag;
 
@@ -924,8 +940,8 @@ status_prompt_redraw(struct client *c)
 {
 	struct screen_write_ctx		ctx;
 	struct session		       *s = c->session;
-	struct screen		        old_status;
-	size_t			        i, size, left, len, off;
+	struct screen			old_status;
+	size_t				i, size, left, len, off;
 	struct grid_cell		gc, *gcp;
 	int				utf8flag;
 
@@ -1364,12 +1380,12 @@ status_prompt_add_history(const char *line)
 char *
 status_prompt_complete(const char *s)
 {
-	const struct cmd_entry 	  	       **cmdent;
+	const struct cmd_entry		       **cmdent;
 	const struct options_table_entry	*oe;
 	ARRAY_DECL(, const char *)		 list;
 	char					*prefix, *s2;
 	u_int					 i;
-	size_t				 	 j;
+	size_t					 j;
 
 	if (*s == '\0')
 		return (NULL);

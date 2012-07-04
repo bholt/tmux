@@ -1,4 +1,4 @@
-/* $Id: server-window.c 2665 2012-01-21 19:30:07Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2009 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -38,7 +38,7 @@ server_window_loop(void)
 	struct winlink		*wl;
 	struct window_pane	*wp;
 	struct session		*s;
-	u_int		 	 i;
+	u_int			 i;
 
 	for (i = 0; i < ARRAY_LENGTH(&windows); i++) {
 		w = ARRAY_ITEM(&windows, i);
@@ -85,7 +85,7 @@ server_window_check_bell(struct session *s, struct winlink *wl)
 		visual = options_get_number(&s->options, "visual-bell");
 		for (i = 0; i < ARRAY_LENGTH(&clients); i++) {
 			c = ARRAY_ITEM(&clients, i);
-			if (c == NULL || c->session != s)
+			if (c == NULL || c->session != s || (c->flags & CLIENT_CONTROL))
 				continue;
 			if (!visual) {
 				tty_bell(&c->tty);
@@ -105,7 +105,7 @@ server_window_check_bell(struct session *s, struct winlink *wl)
 		visual = options_get_number(&s->options, "visual-bell");
 		for (i = 0; i < ARRAY_LENGTH(&clients); i++) {
 			c = ARRAY_ITEM(&clients, i);
-			if (c == NULL || c->session != s)
+			if (c == NULL || c->session != s || (c->flags & CLIENT_CONTROL))
 				continue;
 			if (c->session->curw->window != w)
 				continue;
@@ -169,7 +169,7 @@ server_window_check_silence(struct session *s, struct winlink *wl)
 
 	if (s->curw == wl && !(s->flags & SESSION_UNATTACHED)) {
 		/*
-		 * Reset the timer for this window if we've focused it.  We
+		 * Reset the timer for this window if we've focused it.	We
 		 * don't want the timer tripping as soon as we've switched away
 		 * from this window.
 		 */
@@ -255,7 +255,7 @@ ring_bell(struct session *s)
 
 	for (i = 0; i < ARRAY_LENGTH(&clients); i++) {
 		c = ARRAY_ITEM(&clients, i);
-		if (c != NULL && c->session == s)
+		if (c == NULL || c->session != s || (c->flags & CLIENT_CONTROL))
 			tty_bell(&c->tty);
 	}
 }

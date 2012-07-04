@@ -1,4 +1,4 @@
-/* $Id: cmd-list-keys.c 2670 2012-01-21 19:38:26Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -106,7 +106,7 @@ cmd_list_keys_table(struct cmd *self, struct cmd_ctx *ctx)
 	const struct mode_key_table	*mtab;
 	struct mode_key_binding		*mbind;
 	const char			*key, *cmdstr, *mode;
-	int			 	 width, keywidth, any_mode;
+	int				 width, keywidth, any_mode;
 
 	tablename = args_get(args, 't');
 	if ((mtab = mode_key_findtable(tablename)) == NULL) {

@@ -1,4 +1,4 @@
-/* $Id: tmux.c 2669 2012-01-21 19:36:40Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -51,8 +51,8 @@ pid_t		 environ_pid = -1;
 int		 environ_idx = -1;
 
 __dead void	 usage(void);
-void	 	 parseenvironment(void);
-char 		*makesocketpath(const char *);
+void		 parseenvironment(void);
+char		*makesocketpath(const char *);
 
 #ifndef HAVE___PROGNAME
 char      *__progname = (char *) "tmux";
@@ -62,7 +62,7 @@ __dead void
 usage(void)
 {
 	fprintf(stderr,
-	    "usage: %s [-28lquvV] [-c shell-command] [-f file] [-L socket-name]\n"
+	    "usage: %s [-28lquvVC] [-c shell-command] [-f file] [-L socket-name]\n"
 	    "            [-S socket-path] [command [flags]]\n",
 	    __progname);
 	exit(1);
@@ -236,7 +236,7 @@ main(int argc, char **argv)
 {
 	struct passwd	*pw;
 	char		*s, *path, *label, *home, **var;
-	int	 	 opt, flags, quiet, keys;
+	int		 opt, flags, quiet, keys;
 
 #if defined(DEBUG) && defined(__OpenBSD__)
 	malloc_options = (char *) "AFGJPX";
@@ -245,7 +245,7 @@ main(int argc, char **argv)
 	quiet = flags = 0;
 	label = path = NULL;
 	login_shell = (**argv == '-');
-	while ((opt = getopt(argc, argv, "28c:df:lL:qS:uUvV")) != -1) {
+	while ((opt = getopt(argc, argv, "28Cc:df:lL:qS:uUvV")) != -1) {
 		switch (opt) {
 		case '2':
 			flags |= IDENTIFY_256COLOURS;
@@ -254,6 +254,9 @@ main(int argc, char **argv)
 		case '8':
 			flags |= IDENTIFY_88COLOURS;
 			flags &= ~IDENTIFY_256COLOURS;
+			break;
+		case 'C':
+			flags |= IDENTIFY_CONTROL;
 			break;
 		case 'c':
 			if (shell_cmd != NULL)

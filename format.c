@@ -1,4 +1,4 @@
-/* $Id: format.c 2672 2012-01-22 23:41:34Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2011 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -71,7 +71,7 @@ const char *format_aliases[26] = {
 	"window_name",	/* W */
 	NULL,		/* X */
 	NULL,		/* Y */
-	NULL 		/* Z */
+	NULL		/* Z */
 };
 
 /* Create a new tree. */
@@ -210,7 +210,7 @@ format_expand(struct format_tree *ft, const char *fmt)
 	char		*buf, *ptr;
 	const char	*s;
 	size_t		 off, len, n;
-	int     	 ch;
+	int		 ch;
 
 	len = 64;
 	buf = xmalloc(len);
@@ -341,6 +341,7 @@ format_winlink(struct format_tree *ft, struct session *s, struct winlink *wl)
 	layout = layout_dump(w);
 	flags = window_printable_flags(s, wl);
 
+	format_add(ft, "window_id", "@%u", w->id);
 	format_add(ft, "window_index", "%d", wl->idx);
 	format_add(ft, "window_name", "%s", w->name);
 	format_add(ft, "window_width", "%u", w->sx);

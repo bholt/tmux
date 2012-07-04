@@ -1,4 +1,4 @@
-/* $Id: options-table.c 2669 2012-01-21 19:36:40Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2011 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -46,6 +46,9 @@ const char *options_table_status_keys_list[] = {
 };
 const char *options_table_status_justify_list[] = {
 	"left", "centre", "right", NULL
+};
+const char *options_table_status_position_list[] = {
+	"top", "bottom", NULL
 };
 const char *options_table_bell_action_list[] = {
 	"none", "any", "current", NULL
@@ -358,6 +361,12 @@ const struct options_table_entry session_options_table[] = {
 	  .default_num = 10
 	},
 
+	{ .name = "status-position",
+	  .type = OPTIONS_TABLE_CHOICE,
+	  .choices = options_table_status_position_list,
+	  .default_num = 1
+	},
+
 	{ .name = "status-right",
 	  .type = OPTIONS_TABLE_STRING,
 	  .default_str = "\"#22T\" %H:%M %d-%b-%y"
@@ -393,15 +402,15 @@ const struct options_table_entry session_options_table[] = {
 	{ .name = "terminal-overrides",
 	  .type = OPTIONS_TABLE_STRING,
 	  .default_str = "*88col*:colors=88,*256col*:colors=256"
-	                 ",xterm*:XT:Ms=\\E]52;%p1%s;%p2%s\\007"
-	                 ":Cc=\\E]12;%p1%s\\007:Cr=\\E]112\\007"
+			 ",xterm*:XT:Ms=\\E]52;%p1%s;%p2%s\\007"
+			 ":Cc=\\E]12;%p1%s\\007:Cr=\\E]112\\007"
 			 ":Cs=\\E[%p1%d q:Csr=\\E[2 q,screen*:XT"
 	},
 
 	{ .name = "update-environment",
 	  .type = OPTIONS_TABLE_STRING,
 	  .default_str = "DISPLAY SSH_ASKPASS SSH_AUTH_SOCK SSH_AGENT_PID "
-	                 "SSH_CONNECTION WINDOWID XAUTHORITY"
+			 "SSH_CONNECTION WINDOWID XAUTHORITY"
 
 	},
 

@@ -1,4 +1,4 @@
-# $Id: Makefile.am 2592 2011-09-21 16:32:31Z tcunha $
+# $Id$
 
 # Obvious program stuff.
 bin_PROGRAMS = tmux
@@ -60,6 +60,7 @@ dist_tmux_SOURCES = \
 	cfg.c \
 	client.c \
 	clock.c \
+	control.c \
 	cmd-attach-session.c \
 	cmd-bind-key.c \
 	cmd-break-pane.c \
@@ -72,6 +73,7 @@ dist_tmux_SOURCES = \
 	cmd-clock-mode.c \
 	cmd-command-prompt.c \
 	cmd-confirm-before.c \
+	cmd-control.c \
 	cmd-copy-mode.c \
 	cmd-delete-buffer.c \
 	cmd-detach-client.c \
@@ -96,6 +98,7 @@ dist_tmux_SOURCES = \
 	cmd-list.c \
 	cmd-load-buffer.c \
 	cmd-lock-server.c \
+	cmd-move-pane.c \
 	cmd-move-window.c \
 	cmd-new-session.c \
 	cmd-new-window.c \
@@ -135,6 +138,7 @@ dist_tmux_SOURCES = \
 	cmd-unlink-window.c \
 	cmd.c \
 	colour.c \
+	dstring.c \
 	environ.c \
 	format.c \
 	grid-utf8.c \

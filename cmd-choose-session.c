@@ -1,4 +1,4 @@
-/* $Id: cmd-choose-session.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2009 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -43,7 +43,7 @@ const struct cmd_entry cmd_choose_session_entry = {
 
 struct cmd_choose_session_data {
 	struct client	*client;
-	char   		*template;
+	char		*template;
 };
 
 int
@@ -54,7 +54,7 @@ cmd_choose_session_exec(struct cmd *self, struct cmd_ctx *ctx)
 	struct winlink			*wl;
 	struct session			*s;
 	struct session_group		*sg;
-	u_int			 	 idx, sgidx, cur;
+	u_int				 idx, sgidx, cur;
 	char				 tmp[64];
 
 	if (ctx->curclient == NULL) {

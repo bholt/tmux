@@ -1,4 +1,4 @@
-/* $Id: cmd-break-pane.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2009 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -46,8 +46,10 @@ cmd_break_pane_exec(struct cmd *self, struct cmd_ctx *ctx)
 	struct session		*s;
 	struct window_pane	*wp;
 	struct window		*w;
+	char			*name;
 	char			*cause;
 	int			 base_idx;
+	struct client		*c;
 
 	if ((wl = cmd_find_pane(ctx, args_get(args, 't'), &s, &wp)) == NULL)
 		return (-1);
@@ -74,7 +76,9 @@ cmd_break_pane_exec(struct cmd *self, struct cmd_ctx *ctx)
 	w = wp->window = window_create1(s->sx, s->sy);
 	TAILQ_INSERT_HEAD(&w->panes, wp, entry);
 	w->active = wp;
-	w->name = default_window_name(w);
+	name = default_window_name(w);
+	window_set_name(w, name);
+	xfree(name);
 	layout_init(w);
 
 	base_idx = options_get_number(&s->options, "base-index");
@@ -84,6 +88,12 @@ cmd_break_pane_exec(struct cmd *self, struct cmd_ctx *ctx)
 
 	server_redraw_session(s);
 	server_status_session_group(s);
+
+	/* Output the window ID for control clients. */
+	c = cmd_find_client(ctx, NULL);
+	if (c->flags & CLIENT_CONTROL) {
+	    ctx->print(ctx, "%d", w->id);
+	}
 
 	return (0);
 }

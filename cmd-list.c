@@ -1,4 +1,4 @@
-/* $Id: cmd-list.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2009 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -83,11 +83,29 @@ cmd_list_exec(struct cmd_list *cmdlist, struct cmd_ctx *ctx)
 {
 	struct cmd	*cmd;
 	int		 n, retval;
+	struct client	*c;
+	int		 print_guards;
 
+	c = ctx->curclient;
+	/* print %begin...%end guards around command output only if the client
+	 * is a control client that has an attached session. The requirement
+	 * for an attached session exists because the local client may issue an
+	 * attach-session or new-session command on startup that the remote
+	 * client is unaware of. Only after attaching to a session does the
+	 * remote client take charge.*/
+	print_guards = c && (c->flags & CLIENT_CONTROL) && c->session;
 	retval = 0;
+	control_set_spontaneous_messages_allowed(0);
 	TAILQ_FOREACH(cmd, &cmdlist->list, qentry) {
-		if ((n = cmd_exec(cmd, ctx)) == -1)
+		if (print_guards)
+			ctx->print(ctx, "%%begin");
+		if ((n = cmd_exec(cmd, ctx)) == -1) {
+			if (print_guards)
+				ctx->print(ctx, "%%end");
 			return (-1);
+		}
+		if (print_guards)
+			ctx->print(ctx, "%%end");
 
 		/*
 		 * A 1 return value means the command client is being attached
@@ -111,6 +129,7 @@ cmd_list_exec(struct cmd_list *cmdlist, struct cmd_ctx *ctx)
 			}
 		}
 	}
+	control_set_spontaneous_messages_allowed(1);
 	return (retval);
 }
 

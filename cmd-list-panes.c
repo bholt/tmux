@@ -1,4 +1,4 @@
-/* $Id: cmd-list-panes.c 2639 2011-11-25 13:31:56Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2009 Nicholas Marriott <nicm@users.sourceforge.net>

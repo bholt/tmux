@@ -1,4 +1,4 @@
-/* $Id: cmd-server-info.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2008 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -58,10 +58,10 @@ cmd_server_info_exec(unused struct cmd *self, struct cmd_ctx *ctx)
 	struct job				*job;
 	struct grid				*gd;
 	struct grid_line			*gl;
-	u_int		 			 i, j, k;
+	u_int					 i, j, k;
 	char					 out[80];
 	char					*tim;
-	time_t		 			 t;
+	time_t					 t;
 	u_int					 lines, ulines;
 	size_t					 size, usize;
 

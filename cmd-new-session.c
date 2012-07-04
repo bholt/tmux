@@ -1,4 +1,4 @@
-/* $Id: cmd-new-session.c 2619 2011-10-23 15:05:20Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -64,7 +64,7 @@ cmd_new_session_exec(struct cmd *self, struct cmd_ctx *ctx)
 	struct passwd		*pw;
 	const char		*newname, *target, *update, *cwd, *errstr;
 	char			*overrides, *cmd, *cause;
-	int			 detached, idx;
+	int			 detached, idx, hastty;
 	u_int			 sx, sy, i;
 
 	newname = args_get(args, 's');
@@ -110,6 +110,15 @@ cmd_new_session_exec(struct cmd *self, struct cmd_ctx *ctx)
 	if (ctx->cmdclient == NULL && ctx->curclient == NULL)
 		detached = 1;
 
+	/* Control clients don't have a tty, so avoid doing tty-ish things in
+	 * that case. */
+	if ((ctx->cmdclient && (ctx->cmdclient->flags & CLIENT_CONTROL)) ||
+		(ctx->curclient && (ctx->curclient->flags & CLIENT_CONTROL))) {
+		hastty = 0;
+	} else {
+		hastty = 1;
+	}
+
 	/*
 	 * Save the termios settings, part of which is used for new windows in
 	 * this session.
@@ -127,7 +136,7 @@ cmd_new_session_exec(struct cmd *self, struct cmd_ctx *ctx)
 		tiop = NULL;
 
 	/* Open the terminal if necessary. */
-	if (!detached && ctx->cmdclient != NULL) {
+	if (hastty && !detached && ctx->cmdclient != NULL) {
 		if (!(ctx->cmdclient->flags & CLIENT_TERMINAL)) {
 			ctx->error(ctx, "not a terminal");
 			return (-1);
@@ -217,8 +226,7 @@ cmd_new_session_exec(struct cmd *self, struct cmd_ctx *ctx)
 	if (cmd != NULL && args_has(args, 'n')) {
 		w = s->curw->window;
 
-		xfree(w->name);
-		w->name = xstrdup(args_get(args, 'n'));
+		window_set_name(w, args_get(args, 'n'));
 
 		options_set_number(&w->options, "automatic-rename", 0);
 	}
@@ -245,6 +253,10 @@ cmd_new_session_exec(struct cmd *self, struct cmd_ctx *ctx)
 			if (old_s != NULL)
 				ctx->cmdclient->last_session = old_s;
 			ctx->cmdclient->session = s;
+			if (ctx->cmdclient->flags & CLIENT_CONTROL) {
+				control_handshake(ctx->cmdclient);
+				control_notify_attached_session_changed(ctx->cmdclient);
+			}
 			session_update_activity(s);
 			server_redraw_client(ctx->cmdclient);
 		} else {
@@ -252,6 +264,10 @@ cmd_new_session_exec(struct cmd *self, struct cmd_ctx *ctx)
 			if (old_s != NULL)
 				ctx->curclient->last_session = old_s;
 			ctx->curclient->session = s;
+			if (ctx->curclient->flags & CLIENT_CONTROL) {
+				control_handshake(ctx->curclient);
+				control_notify_attached_session_changed(ctx->curclient);
+			}
 			session_update_activity(s);
 			server_redraw_client(ctx->curclient);
 		}

@@ -1,4 +1,4 @@
-/* $Id: cmd-capture-pane.c 2651 2011-12-30 14:16:44Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2009 Jonathan Alvarado <radobobo@users.sourceforge.net>
@@ -44,12 +44,12 @@ cmd_capture_pane_exec(struct cmd *self, struct cmd_ctx *ctx)
 {
 	struct args		*args = self->args;
 	struct window_pane	*wp;
-	char 			*buf, *line, *cause;
+	char			*buf, *line, *cause;
 	struct screen		*s;
 	struct grid		*gd;
 	int			 buffer, n;
 	u_int			 i, limit, top, bottom, tmp;
-	size_t         		 len, linelen;
+	size_t			 len, linelen;
 
 	if (cmd_find_pane(ctx, args_get(args, 't'), NULL, &wp) == NULL)
 		return (-1);

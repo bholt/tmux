@@ -1,4 +1,4 @@
-/* $Id: strcasestr.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 /*	$OpenBSD: strcasestr.c,v 1.3 2006/03/31 05:34:55 deraadt Exp $	*/
 /*	$NetBSD: strcasestr.c,v 1.2 2005/02/09 21:35:47 kleink Exp $	*/
 

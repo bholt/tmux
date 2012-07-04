@@ -1,4 +1,4 @@
-/* $Id: tty-acs.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2010 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -26,7 +26,7 @@ int	tty_acs_cmp(const void *, const void *);
 
 /* Table mapping ACS entries to UTF-8. */
 struct tty_acs_entry {
-	u_char	 	 key;
+	u_char		 key;
 	const char	*string;
 };
 const struct tty_acs_entry tty_acs_table[] = {

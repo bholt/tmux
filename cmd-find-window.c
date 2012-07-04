@@ -1,4 +1,4 @@
-/* $Id: cmd-find-window.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2009 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -55,8 +55,8 @@ cmd_find_window_exec(struct cmd *self, struct cmd_ctx *ctx)
 	struct winlink			*wl, *wm;
 	struct window			*w;
 	struct window_pane		*wp;
-	ARRAY_DECL(, u_int)	 	 list_idx;
-	ARRAY_DECL(, char *)	 	 list_ctx;
+	ARRAY_DECL(, u_int)		 list_idx;
+	ARRAY_DECL(, char *)		 list_ctx;
 	char				*str, *sres, *sctx, *searchstr;
 	u_int				 i, line;
 

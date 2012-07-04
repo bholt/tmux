@@ -1,4 +1,4 @@
-/* $Id: arguments.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2010 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -204,7 +204,7 @@ args_strtonum(struct args *args,
     u_char ch, long long minval, long long maxval, char **cause)
 {
 	const char	*errstr;
-	long long 	 ll;
+	long long	 ll;
 
 	if (!args_has(args, ch)) {
 		*cause = xstrdup("missing");

@@ -1,4 +1,4 @@
-/* $Id: daemon.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 /*	$OpenBSD: daemon.c,v 1.6 2005/08/08 08:05:33 espie Exp $ */
 /*-
  * Copyright (c) 1990, 1993

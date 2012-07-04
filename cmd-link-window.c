@@ -1,4 +1,4 @@
-/* $Id: cmd-link-window.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -51,7 +51,6 @@ cmd_link_window_exec(struct cmd *self, struct cmd_ctx *ctx)
 		return (-1);
 	if ((idx = cmd_find_index(ctx, args_get(args, 't'), &dst)) == -2)
 		return (-1);
-
 	kflag = args_has(self->args, 'k');
 	dflag = args_has(self->args, 'd');
 	if (server_link_window(src, wl, dst, idx, kflag, !dflag, &cause) != 0) {

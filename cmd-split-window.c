@@ -1,4 +1,4 @@
-/* $Id: cmd-split-window.c 2664 2012-01-20 21:21:32Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2009 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -57,7 +57,7 @@ cmd_split_window_exec(struct cmd *self, struct cmd_ctx *ctx)
 	struct window		*w;
 	struct window_pane	*wp, *new_wp = NULL;
 	struct environ		 env;
-	const char	       	*cmd, *cwd, *shell;
+	const char		*cmd, *cwd, *shell;
 	char			*cause, *new_cause;
 	u_int			 hlimit, paneidx;
 	int			 size, percentage;
@@ -111,7 +111,7 @@ cmd_split_window_exec(struct cmd *self, struct cmd_ctx *ctx)
 	if (*shell == '\0' || areshell(shell))
 		shell = _PATH_BSHELL;
 
-	if ((lc = layout_split_pane(wp, type, size)) == NULL) {
+	if ((lc = layout_split_pane(wp, type, size, 0)) == NULL) {
 		cause = xstrdup("pane too small");
 		goto error;
 	}
@@ -137,6 +137,7 @@ cmd_split_window_exec(struct cmd *self, struct cmd_ctx *ctx)
 			fatalx("index not found");
 		ctx->print(ctx, "%s:%u.%u", s->name, wl->idx, paneidx);
 	}
+	control_notify_layout_change(w);
 	return (0);
 
 error:

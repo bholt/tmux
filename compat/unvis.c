@@ -1,4 +1,4 @@
-/* $Id: unvis.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 /*	$OpenBSD: unvis.c,v 1.12 2005/08/08 08:05:34 espie Exp $ */
 /*-
  * Copyright (c) 1989, 1993

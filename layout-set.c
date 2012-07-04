@@ -1,4 +1,4 @@
-/* $Id: layout-set.c 2634 2011-11-10 21:41:37Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2009 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -35,7 +35,7 @@ void	layout_set_tiled(struct window *);
 
 const struct {
 	const char	*name;
-	void	      	(*arrange)(struct window *);
+	void		(*arrange)(struct window *);
 } layout_sets[] = {
 	{ "even-horizontal", layout_set_even_h },
 	{ "even-vertical", layout_set_even_v },

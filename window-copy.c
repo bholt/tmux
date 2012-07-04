@@ -1,4 +1,4 @@
-/* $Id: window-copy.c 2646 2011-12-06 18:50:26Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -201,7 +201,7 @@ window_copy_init_from_pane(struct window_pane *wp)
 {
 	struct window_copy_mode_data	*data = wp->modedata;
 	struct screen			*s = &data->screen;
-	struct screen_write_ctx	 	 ctx;
+	struct screen_write_ctx		 ctx;
 	u_int				 i;
 
 	if (wp->mode != &window_copy_mode)
@@ -268,7 +268,7 @@ window_copy_vadd(struct window_pane *wp, const char *fmt, va_list ap)
 {
 	struct window_copy_mode_data	*data = wp->modedata;
 	struct screen			*backing = data->backing;
-	struct screen_write_ctx	 	 back_ctx, ctx;
+	struct screen_write_ctx		 back_ctx, ctx;
 	struct grid_cell		 gc;
 	int				 utf8flag;
 	u_int				 old_hsize;
@@ -334,7 +334,7 @@ window_copy_resize(struct window_pane *wp, u_int sx, u_int sy)
 {
 	struct window_copy_mode_data	*data = wp->modedata;
 	struct screen			*s = &data->screen;
-	struct screen_write_ctx	 	 ctx;
+	struct screen_write_ctx		 ctx;
 
 	screen_resize(s, sx, sy);
 	if (data->backing != &wp->base)
@@ -807,7 +807,7 @@ window_copy_key_numeric_prefix(struct window_pane *wp, int key)
 	if (key < '0' || key > '9')
 		return 1;
 
-	if (data->numprefix >= 100) 	/* no more than three digits */
+	if (data->numprefix >= 100)	/* no more than three digits */
 		return 0;
 	data->numprefix = data->numprefix * 10 + key - '0';
 
@@ -832,27 +832,13 @@ window_copy_mouse(
 	/* If mouse wheel (buttons 4 and 5), scroll. */
 	if ((m->b & MOUSE_45)) {
 		if ((m->b & MOUSE_BUTTON) == MOUSE_1) {
-			/* move cursor to top of window, then do scroll*/
-			do {
-				old_cy = data->cy;
+			for (i = 0; i < 5; i++)
 				window_copy_cursor_up(wp, 0);
-			} while (old_cy != data->cy);
-			
-			for (i = 0; i < 4; i++)
-				window_copy_cursor_up(wp, 0);
-
 		} else if ((m->b & MOUSE_BUTTON) == MOUSE_2) {
-			/* move cursor to bottom of window, then do scroll*/
-			do {
-				old_cy = data->cy;
-				window_copy_cursor_down(wp, 0);
-			} while (old_cy != data->cy);
-
 			old_cy = data->cy;
-			for (i = 0; i < 4; i++)
+			for (i = 0; i < 5; i++)
 				window_copy_cursor_down(wp, 0);
-			
-			if (data->oy == 0)
+			if (old_cy == data->cy)
 				goto reset_mode;
 		}
 		return;
@@ -995,7 +981,7 @@ window_copy_search_up(struct window_pane *wp, const char *searchstr)
 	struct screen			*s = data->backing, ss;
 	struct screen_write_ctx		 ctx;
 	struct grid			*gd = s->grid, *sgd;
-	struct grid_cell	 	 gc;
+	struct grid_cell		 gc;
 	size_t				 searchlen;
 	u_int				 i, last, fx, fy, px;
 	int				 utf8flag, n, wrapped;
@@ -1052,7 +1038,7 @@ window_copy_search_down(struct window_pane *wp, const char *searchstr)
 	struct screen			*s = data->backing, ss;
 	struct screen_write_ctx		 ctx;
 	struct grid			*gd = s->grid, *sgd;
-	struct grid_cell	 	 gc;
+	struct grid_cell		 gc;
 	size_t				 searchlen;
 	u_int				 i, first, fx, fy, px;
 	int				 utf8flag, n, wrapped;
@@ -1127,7 +1113,7 @@ window_copy_write_line(
 	struct options			*oo = &wp->window->options;
 	struct grid_cell		 gc;
 	char				 hdr[32];
-	size_t	 			 last, xoff = 0, size = 0;
+	size_t				 last, xoff = 0, size = 0;
 
 	memcpy(&gc, &grid_default_cell, sizeof gc);
 	colour_set_fg(&gc, options_get_number(oo, "mode-fg"));
@@ -1181,7 +1167,7 @@ void
 window_copy_redraw_lines(struct window_pane *wp, u_int py, u_int ny)
 {
 	struct window_copy_mode_data	*data = wp->modedata;
-	struct screen_write_ctx	 	 ctx;
+	struct screen_write_ctx		 ctx;
 	u_int				 i;
 
 	screen_write_start(&ctx, wp, NULL);

@@ -1,4 +1,4 @@
-/* $Id: cmd-resize-pane.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2009 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -86,8 +86,9 @@ cmd_resize_pane_exec(struct cmd *self, struct cmd_ctx *ctx)
 {
 	struct args		*args = self->args;
 	struct winlink		*wl;
-	const char	       	*errstr;
+	const char		*errstr;
 	struct window_pane	*wp;
+	struct client		*c;
 	u_int			 adjust;
 
 	if ((wl = cmd_find_pane(ctx, args_get(args, 't'), NULL, &wp)) == NULL)
@@ -112,6 +113,10 @@ cmd_resize_pane_exec(struct cmd *self, struct cmd_ctx *ctx)
 	else if (args_has(self->args, 'D'))
 		layout_resize_pane(wp, LAYOUT_TOPBOTTOM, adjust);
 	server_redraw_window(wl->window);
+
+	c = cmd_find_client(ctx, NULL);
+	if (c && (c->flags & CLIENT_CONTROL))
+		control_print_session_layouts(c->session, ctx);
 
 	return (0);
 }

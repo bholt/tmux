@@ -1,4 +1,4 @@
-/* $Id: colour.c 2668 2012-01-21 19:33:45Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2008 Nicholas Marriott <nicm@users.sourceforge.net>

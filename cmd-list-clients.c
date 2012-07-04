@@ -1,4 +1,4 @@
-/* $Id: cmd-list-clients.c 2617 2011-10-23 15:03:50Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -43,7 +43,7 @@ const struct cmd_entry cmd_list_clients_entry = {
 int
 cmd_list_clients_exec(struct cmd *self, struct cmd_ctx *ctx)
 {
-	struct args 		*args = self->args;
+	struct args		*args = self->args;
 	struct client		*c;
 	struct session		*s;
 	struct format_tree	*ft;

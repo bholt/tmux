@@ -1,4 +1,4 @@
-/* $Id: cmd-rename-window.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -48,8 +48,7 @@ cmd_rename_window_exec(struct cmd *self, struct cmd_ctx *ctx)
 	if ((wl = cmd_find_window(ctx, args_get(args, 't'), &s)) == NULL)
 		return (-1);
 
-	xfree(wl->window->name);
-	wl->window->name = xstrdup(args->argv[0]);
+	window_set_name(wl->window, args->argv[0]);
 	options_set_number(&wl->window->options, "automatic-rename", 0);
 
 	server_status_window(wl->window);

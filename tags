@@ -1,0 +1,854 @@
+ARRAY_DECL	status.c	/^ARRAY_DECL(, char *) status_prompt_history = ARRAY/
+Mtmux	tmux.c	/^main(int argc, char **argv)$/
+areshell	tmux.c	/^areshell(const char *shell)$/
+args_create	arguments.c	/^args_create(int argc, ...)$/
+args_free	arguments.c	/^args_free(struct args *args)$/
+args_get	arguments.c	/^args_get(struct args *args, u_char ch)$/
+args_has	arguments.c	/^args_has(struct args *args, u_char ch)$/
+args_parse	arguments.c	/^args_parse(const char *template, int argc, char **/
+args_print	arguments.c	/^args_print(struct args *args, char *buf, size_t le/
+args_set	arguments.c	/^args_set(struct args *args, u_char ch, const char /
+args_strtonum	arguments.c	/^args_strtonum(struct args *args,$/
+attributes_fromstring	attributes.c	/^attributes_fromstring(const char *str)$/
+attributes_tostring	attributes.c	/^attributes_tostring(u_char attr)$/
+cfg_add_cause	cfg.c	/^cfg_add_cause(struct causelist *causes, const char/
+cfg_error	cfg.c	/^cfg_error(unused struct cmd_ctx *ctx, const char */
+cfg_print	cfg.c	/^cfg_print(unused struct cmd_ctx *ctx, unused const/
+checkshell	tmux.c	/^checkshell(const char *shell)$/
+clear_signals	signal.c	/^clear_signals(int after_fork)$/
+client_callback	client.c	/^client_callback(unused int fd, short events, void /
+client_connect	client.c	/^client_connect(char *path, int start_server)$/
+client_dispatch_attached	client.c	/^client_dispatch_attached(void)$/
+client_dispatch_wait	client.c	/^client_dispatch_wait(void *data)$/
+client_main	client.c	/^client_main(int argc, char **argv, int flags)$/
+client_send_environ	client.c	/^client_send_environ(void)$/
+client_send_identify	client.c	/^client_send_identify(int flags)$/
+client_signal	client.c	/^client_signal(int sig, unused short events, unused/
+client_update_event	client.c	/^client_update_event(void)$/
+client_write_server	client.c	/^client_write_server(enum msgtype type, void *buf, /
+clock_draw	clock.c	/^clock_draw(struct screen_write_ctx *ctx, int colou/
+cmd_attach_session_exec	cmd-attach-session.c	/^cmd_attach_session_exec(struct cmd *self, struct c/
+cmd_bind_key_check	cmd-bind-key.c	/^cmd_bind_key_check(struct args *args)$/
+cmd_bind_key_exec	cmd-bind-key.c	/^cmd_bind_key_exec(struct cmd *self, struct cmd_ctx/
+cmd_bind_key_table	cmd-bind-key.c	/^cmd_bind_key_table(struct cmd *self, struct cmd_ct/
+cmd_break_pane_exec	cmd-break-pane.c	/^cmd_break_pane_exec(struct cmd *self, struct cmd_c/
+cmd_capture_pane_exec	cmd-capture-pane.c	/^cmd_capture_pane_exec(struct cmd *self, struct cmd/
+cmd_choose_buffer_callback	cmd-choose-buffer.c	/^cmd_choose_buffer_callback(void *data, int idx)$/
+cmd_choose_buffer_data	cmd-choose-buffer.c	/^struct cmd_choose_buffer_data {$/
+cmd_choose_buffer_exec	cmd-choose-buffer.c	/^cmd_choose_buffer_exec(struct cmd *self, struct cm/
+cmd_choose_buffer_free	cmd-choose-buffer.c	/^cmd_choose_buffer_free(void *data)$/
+cmd_choose_client	cmd.c	/^cmd_choose_client(struct clients *cc)$/
+cmd_choose_client_callback	cmd-choose-client.c	/^cmd_choose_client_callback(void *data, int idx)$/
+cmd_choose_client_data	cmd-choose-client.c	/^struct cmd_choose_client_data {$/
+cmd_choose_client_exec	cmd-choose-client.c	/^cmd_choose_client_exec(struct cmd *self, struct cm/
+cmd_choose_client_free	cmd-choose-client.c	/^cmd_choose_client_free(void *data)$/
+cmd_choose_session	cmd.c	/^cmd_choose_session(int prefer_unattached)$/
+cmd_choose_session_callback	cmd-choose-session.c	/^cmd_choose_session_callback(void *data, int idx)$/
+cmd_choose_session_data	cmd-choose-session.c	/^struct cmd_choose_session_data {$/
+cmd_choose_session_exec	cmd-choose-session.c	/^cmd_choose_session_exec(struct cmd *self, struct c/
+cmd_choose_session_free	cmd-choose-session.c	/^cmd_choose_session_free(void *data)$/
+cmd_choose_session_list	cmd.c	/^cmd_choose_session_list(struct sessionslist *ss)$/
+cmd_choose_window_callback	cmd-choose-window.c	/^cmd_choose_window_callback(void *data, int idx)$/
+cmd_choose_window_data	cmd-choose-window.c	/^struct cmd_choose_window_data {$/
+cmd_choose_window_exec	cmd-choose-window.c	/^cmd_choose_window_exec(struct cmd *self, struct cm/
+cmd_choose_window_free	cmd-choose-window.c	/^cmd_choose_window_free(void *data)$/
+cmd_clear_history_exec	cmd-clear-history.c	/^cmd_clear_history_exec(struct cmd *self, struct cm/
+cmd_clock_mode_exec	cmd-clock-mode.c	/^cmd_clock_mode_exec(struct cmd *self, struct cmd_c/
+cmd_command_prompt_callback	cmd-command-prompt.c	/^cmd_command_prompt_callback(void *data, const char/
+cmd_command_prompt_cdata	cmd-command-prompt.c	/^struct cmd_command_prompt_cdata {$/
+cmd_command_prompt_exec	cmd-command-prompt.c	/^cmd_command_prompt_exec(struct cmd *self, struct c/
+cmd_command_prompt_free	cmd-command-prompt.c	/^cmd_command_prompt_free(void *data)$/
+cmd_command_prompt_key_binding	cmd-command-prompt.c	/^cmd_command_prompt_key_binding(struct cmd *self, i/
+cmd_confirm_before_callback	cmd-confirm-before.c	/^cmd_confirm_before_callback(void *data, const char/
+cmd_confirm_before_data	cmd-confirm-before.c	/^struct cmd_confirm_before_data {$/
+cmd_confirm_before_exec	cmd-confirm-before.c	/^cmd_confirm_before_exec(struct cmd *self, struct c/
+cmd_confirm_before_free	cmd-confirm-before.c	/^cmd_confirm_before_free(void *data)$/
+cmd_confirm_before_key_binding	cmd-confirm-before.c	/^cmd_confirm_before_key_binding(struct cmd *self, i/
+cmd_copy_argv	cmd.c	/^cmd_copy_argv(int argc, char *const *argv)$/
+cmd_copy_mode_exec	cmd-copy-mode.c	/^cmd_copy_mode_exec(struct cmd *self, struct cmd_ct/
+cmd_copy_mode_key_binding	cmd-copy-mode.c	/^cmd_copy_mode_key_binding(struct cmd *self, int ke/
+cmd_current_client	cmd.c	/^cmd_current_client(struct cmd_ctx *ctx)$/
+cmd_current_session	cmd.c	/^cmd_current_session(struct cmd_ctx *ctx, int prefe/
+cmd_delete_buffer_exec	cmd-delete-buffer.c	/^cmd_delete_buffer_exec(struct cmd *self, struct cm/
+cmd_detach_client_exec	cmd-detach-client.c	/^cmd_detach_client_exec(struct cmd *self, struct cm/
+cmd_display_message_exec	cmd-display-message.c	/^cmd_display_message_exec(struct cmd *self, struct /
+cmd_display_panes_exec	cmd-display-panes.c	/^cmd_display_panes_exec(struct cmd *self, struct cm/
+cmd_exec	cmd.c	/^cmd_exec(struct cmd *cmd, struct cmd_ctx *ctx)$/
+cmd_find_client	cmd.c	/^cmd_find_client(struct cmd_ctx *ctx, const char *a/
+cmd_find_index	cmd.c	/^cmd_find_index(struct cmd_ctx *ctx, const char *ar/
+cmd_find_index_offset	cmd.c	/^cmd_find_index_offset(const char *winptr, struct s/
+cmd_find_pane	cmd.c	/^cmd_find_pane(struct cmd_ctx *ctx,$/
+cmd_find_pane_offset	cmd.c	/^cmd_find_pane_offset(const char *paneptr, struct w/
+cmd_find_session	cmd.c	/^cmd_find_session(struct cmd_ctx *ctx, const char */
+cmd_find_window	cmd.c	/^cmd_find_window(struct cmd_ctx *ctx, const char *a/
+cmd_find_window_callback	cmd-find-window.c	/^cmd_find_window_callback(void *data, int idx)$/
+cmd_find_window_data	cmd-find-window.c	/^struct cmd_find_window_data {$/
+cmd_find_window_exec	cmd-find-window.c	/^cmd_find_window_exec(struct cmd *self, struct cmd_/
+cmd_find_window_free	cmd-find-window.c	/^cmd_find_window_free(void *data)$/
+cmd_find_window_impl	cmd.c	/^cmd_find_window_impl(struct cmd_ctx *ctx, const ch/
+cmd_find_window_offset	cmd.c	/^cmd_find_window_offset(const char *winptr, struct /
+cmd_free	cmd.c	/^cmd_free(struct cmd *cmd)$/
+cmd_free_argv	cmd.c	/^cmd_free_argv(int argc, char **argv)$/
+cmd_get_default_path	cmd.c	/^cmd_get_default_path(struct cmd_ctx *ctx)$/
+cmd_has_session_exec	cmd-has-session.c	/^cmd_has_session_exec(struct cmd *self, struct cmd_/
+cmd_if_shell_callback	cmd-if-shell.c	/^cmd_if_shell_callback(struct job *job)$/
+cmd_if_shell_data	cmd-if-shell.c	/^struct cmd_if_shell_data {$/
+cmd_if_shell_exec	cmd-if-shell.c	/^cmd_if_shell_exec(struct cmd *self, struct cmd_ctx/
+cmd_if_shell_free	cmd-if-shell.c	/^cmd_if_shell_free(void *data)$/
+cmd_join_pane_exec	cmd-join-pane.c	/^cmd_join_pane_exec(struct cmd *self, struct cmd_ct/
+cmd_join_pane_key_binding	cmd-join-pane.c	/^cmd_join_pane_key_binding(struct cmd *self, int ke/
+cmd_kill_pane_exec	cmd-kill-pane.c	/^cmd_kill_pane_exec(struct cmd *self, struct cmd_ct/
+cmd_kill_server_exec	cmd-kill-server.c	/^cmd_kill_server_exec(unused struct cmd *self, unus/
+cmd_kill_session_exec	cmd-kill-session.c	/^cmd_kill_session_exec(struct cmd *self, struct cmd/
+cmd_kill_window_exec	cmd-kill-window.c	/^cmd_kill_window_exec(struct cmd *self, struct cmd_/
+cmd_link_window_exec	cmd-link-window.c	/^cmd_link_window_exec(struct cmd *self, struct cmd_/
+cmd_list_buffers_exec	cmd-list-buffers.c	/^cmd_list_buffers_exec(unused struct cmd *self, str/
+cmd_list_clients_exec	cmd-list-clients.c	/^cmd_list_clients_exec(struct cmd *self, struct cmd/
+cmd_list_commands_exec	cmd-list-commands.c	/^cmd_list_commands_exec(unused struct cmd *self, st/
+cmd_list_exec	cmd-list.c	/^cmd_list_exec(struct cmd_list *cmdlist, struct cmd/
+cmd_list_free	cmd-list.c	/^cmd_list_free(struct cmd_list *cmdlist)$/
+cmd_list_keys_exec	cmd-list-keys.c	/^cmd_list_keys_exec(struct cmd *self, struct cmd_ct/
+cmd_list_keys_table	cmd-list-keys.c	/^cmd_list_keys_table(struct cmd *self, struct cmd_c/
+cmd_list_panes_exec	cmd-list-panes.c	/^cmd_list_panes_exec(struct cmd *self, struct cmd_c/
+cmd_list_panes_server	cmd-list-panes.c	/^cmd_list_panes_server(struct cmd *self, struct cmd/
+cmd_list_panes_session	cmd-list-panes.c	/^cmd_list_panes_session($/
+cmd_list_panes_window	cmd-list-panes.c	/^cmd_list_panes_window(struct cmd *self,$/
+cmd_list_parse	cmd-list.c	/^cmd_list_parse(int argc, char **argv, char **cause/
+cmd_list_print	cmd-list.c	/^cmd_list_print(struct cmd_list *cmdlist, char *buf/
+cmd_list_sessions_exec	cmd-list-sessions.c	/^cmd_list_sessions_exec(struct cmd *self, struct cm/
+cmd_list_windows_exec	cmd-list-windows.c	/^cmd_list_windows_exec(struct cmd *self, struct cmd/
+cmd_list_windows_server	cmd-list-windows.c	/^cmd_list_windows_server(struct cmd *self, struct c/
+cmd_list_windows_session	cmd-list-windows.c	/^cmd_list_windows_session($/
+cmd_load_buffer_callback	cmd-load-buffer.c	/^cmd_load_buffer_callback(struct client *c, void *d/
+cmd_load_buffer_exec	cmd-load-buffer.c	/^cmd_load_buffer_exec(struct cmd *self, struct cmd_/
+cmd_lock_server_exec	cmd-lock-server.c	/^cmd_lock_server_exec(struct cmd *self, unused stru/
+cmd_lookup_client	cmd.c	/^cmd_lookup_client(const char *name)$/
+cmd_lookup_index	cmd.c	/^cmd_lookup_index(struct session *s, const char *na/
+cmd_lookup_paneid	cmd.c	/^cmd_lookup_paneid(const char *arg)$/
+cmd_lookup_session	cmd.c	/^cmd_lookup_session(const char *name, int *ambiguou/
+cmd_lookup_window	cmd.c	/^cmd_lookup_window(struct session *s, const char *n/
+cmd_move_window_exec	cmd-move-window.c	/^cmd_move_window_exec(struct cmd *self, struct cmd_/
+cmd_new_session_check	cmd-new-session.c	/^cmd_new_session_check(struct args *args)$/
+cmd_new_session_exec	cmd-new-session.c	/^cmd_new_session_exec(struct cmd *self, struct cmd_/
+cmd_new_window_exec	cmd-new-window.c	/^cmd_new_window_exec(struct cmd *self, struct cmd_c/
+cmd_pack_argv	cmd.c	/^cmd_pack_argv(int argc, char **argv, char *buf, si/
+cmd_pane_session	cmd.c	/^cmd_pane_session(struct cmd_ctx *ctx, struct windo/
+cmd_parse	cmd.c	/^cmd_parse(int argc, char **argv, char **cause)$/
+cmd_paste_buffer_exec	cmd-paste-buffer.c	/^cmd_paste_buffer_exec(struct cmd *self, struct cmd/
+cmd_paste_buffer_filter	cmd-paste-buffer.c	/^cmd_paste_buffer_filter($/
+cmd_pipe_pane_error_callback	cmd-pipe-pane.c	/^cmd_pipe_pane_error_callback($/
+cmd_pipe_pane_exec	cmd-pipe-pane.c	/^cmd_pipe_pane_exec(struct cmd *self, struct cmd_ct/
+cmd_print	cmd.c	/^cmd_print(struct cmd *cmd, char *buf, size_t len)$/
+cmd_refresh_client_exec	cmd-refresh-client.c	/^cmd_refresh_client_exec(struct cmd *self, struct c/
+cmd_rename_session_exec	cmd-rename-session.c	/^cmd_rename_session_exec(struct cmd *self, struct c/
+cmd_rename_window_exec	cmd-rename-window.c	/^cmd_rename_window_exec(struct cmd *self, struct cm/
+cmd_resize_pane_exec	cmd-resize-pane.c	/^cmd_resize_pane_exec(struct cmd *self, struct cmd_/
+cmd_resize_pane_key_binding	cmd-resize-pane.c	/^cmd_resize_pane_key_binding(struct cmd *self, int /
+cmd_respawn_pane_exec	cmd-respawn-pane.c	/^cmd_respawn_pane_exec(struct cmd *self, struct cmd/
+cmd_respawn_window_exec	cmd-respawn-window.c	/^cmd_respawn_window_exec(struct cmd *self, struct c/
+cmd_rotate_window_exec	cmd-rotate-window.c	/^cmd_rotate_window_exec(struct cmd *self, struct cm/
+cmd_rotate_window_key_binding	cmd-rotate-window.c	/^cmd_rotate_window_key_binding(struct cmd *self, in/
+cmd_run_shell_callback	cmd-run-shell.c	/^cmd_run_shell_callback(struct job *job)$/
+cmd_run_shell_data	cmd-run-shell.c	/^struct cmd_run_shell_data {$/
+cmd_run_shell_exec	cmd-run-shell.c	/^cmd_run_shell_exec(struct cmd *self, struct cmd_ct/
+cmd_run_shell_free	cmd-run-shell.c	/^cmd_run_shell_free(void *data)$/
+cmd_save_buffer_exec	cmd-save-buffer.c	/^cmd_save_buffer_exec(struct cmd *self, struct cmd_/
+cmd_select_layout_exec	cmd-select-layout.c	/^cmd_select_layout_exec(struct cmd *self, struct cm/
+cmd_select_layout_key_binding	cmd-select-layout.c	/^cmd_select_layout_key_binding(struct cmd *self, in/
+cmd_select_pane_exec	cmd-select-pane.c	/^cmd_select_pane_exec(struct cmd *self, struct cmd_/
+cmd_select_pane_key_binding	cmd-select-pane.c	/^cmd_select_pane_key_binding(struct cmd *self, int /
+cmd_select_window_exec	cmd-select-window.c	/^cmd_select_window_exec(struct cmd *self, struct cm/
+cmd_select_window_key_binding	cmd-select-window.c	/^cmd_select_window_key_binding(struct cmd *self, in/
+cmd_send_keys_exec	cmd-send-keys.c	/^cmd_send_keys_exec(struct cmd *self, struct cmd_ct/
+cmd_send_prefix_exec	cmd-send-prefix.c	/^cmd_send_prefix_exec(struct cmd *self, struct cmd_/
+cmd_server_info_exec	cmd-server-info.c	/^cmd_server_info_exec(unused struct cmd *self, stru/
+cmd_set_buffer_exec	cmd-set-buffer.c	/^cmd_set_buffer_exec(struct cmd *self, struct cmd_c/
+cmd_set_environment_exec	cmd-set-environment.c	/^cmd_set_environment_exec(struct cmd *self, struct /
+cmd_set_option_attributes	cmd-set-option.c	/^cmd_set_option_attributes(unused struct cmd *self,/
+cmd_set_option_choice	cmd-set-option.c	/^cmd_set_option_choice(unused struct cmd *self, str/
+cmd_set_option_colour	cmd-set-option.c	/^cmd_set_option_colour(unused struct cmd *self, str/
+cmd_set_option_exec	cmd-set-option.c	/^cmd_set_option_exec(struct cmd *self, struct cmd_c/
+cmd_set_option_find	cmd-set-option.c	/^cmd_set_option_find($/
+cmd_set_option_flag	cmd-set-option.c	/^cmd_set_option_flag(unused struct cmd *self, struc/
+cmd_set_option_key	cmd-set-option.c	/^cmd_set_option_key(unused struct cmd *self, struct/
+cmd_set_option_number	cmd-set-option.c	/^cmd_set_option_number(unused struct cmd *self, str/
+cmd_set_option_set	cmd-set-option.c	/^cmd_set_option_set(struct cmd *self, struct cmd_ct/
+cmd_set_option_string	cmd-set-option.c	/^cmd_set_option_string(struct cmd *self, unused str/
+cmd_set_option_unset	cmd-set-option.c	/^cmd_set_option_unset(struct cmd *self, struct cmd_/
+cmd_show_buffer_exec	cmd-show-buffer.c	/^cmd_show_buffer_exec(struct cmd *self, struct cmd_/
+cmd_show_environment_exec	cmd-show-environment.c	/^cmd_show_environment_exec(struct cmd *self, struct/
+cmd_show_messages_exec	cmd-show-messages.c	/^cmd_show_messages_exec(struct cmd *self, struct cm/
+cmd_show_options_exec	cmd-show-options.c	/^cmd_show_options_exec(struct cmd *self, struct cmd/
+cmd_source_file_exec	cmd-source-file.c	/^cmd_source_file_exec(struct cmd *self, struct cmd_/
+cmd_split_window_exec	cmd-split-window.c	/^cmd_split_window_exec(struct cmd *self, struct cmd/
+cmd_split_window_key_binding	cmd-split-window.c	/^cmd_split_window_key_binding(struct cmd *self, int/
+cmd_start_server_exec	cmd-start-server.c	/^cmd_start_server_exec(unused struct cmd *self, unu/
+cmd_string_expand_tilde	cmd-string.c	/^cmd_string_expand_tilde(const char *s, size_t *p)$/
+cmd_string_first	cmd-string.c	/^#define cmd_string_first(ch) ((ch) == '_' || \\$/
+cmd_string_getc	cmd-string.c	/^cmd_string_getc(const char *s, size_t *p)$/
+cmd_string_other	cmd-string.c	/^#define cmd_string_other(ch) ((ch) == '_' || \\$/
+cmd_string_parse	cmd-string.c	/^cmd_string_parse(const char *s, struct cmd_list **/
+cmd_string_string	cmd-string.c	/^cmd_string_string(const char *s, size_t *p, char e/
+cmd_string_ungetc	cmd-string.c	/^cmd_string_ungetc(size_t *p)$/
+cmd_string_variable	cmd-string.c	/^cmd_string_variable(const char *s, size_t *p)$/
+cmd_suspend_client_exec	cmd-suspend-client.c	/^cmd_suspend_client_exec(struct cmd *self, struct c/
+cmd_swap_pane_exec	cmd-swap-pane.c	/^cmd_swap_pane_exec(struct cmd *self, struct cmd_ct/
+cmd_swap_pane_key_binding	cmd-swap-pane.c	/^cmd_swap_pane_key_binding(struct cmd *self, int ke/
+cmd_swap_window_exec	cmd-swap-window.c	/^cmd_swap_window_exec(struct cmd *self, struct cmd_/
+cmd_switch_client_exec	cmd-switch-client.c	/^cmd_switch_client_exec(struct cmd *self, struct cm/
+cmd_switch_client_key_binding	cmd-switch-client.c	/^cmd_switch_client_key_binding(struct cmd *self, in/
+cmd_template_replace	cmd.c	/^cmd_template_replace(char *template, const char *s/
+cmd_unbind_key_check	cmd-unbind-key.c	/^cmd_unbind_key_check(struct args *args)$/
+cmd_unbind_key_exec	cmd-unbind-key.c	/^cmd_unbind_key_exec(struct cmd *self, unused struc/
+cmd_unbind_key_table	cmd-unbind-key.c	/^cmd_unbind_key_table(struct cmd *self, struct cmd_/
+cmd_unlink_window_exec	cmd-unlink-window.c	/^cmd_unlink_window_exec(struct cmd *self, struct cm/
+cmd_unpack_argv	cmd.c	/^cmd_unpack_argv(char *buf, size_t len, int argc, c/
+cmp_procs	osdep-dragonfly.c	/^cmp_procs(struct kinfo_proc *p1, struct kinfo_proc/
+colour_256to16	colour.c	/^colour_256to16(u_char c)$/
+colour_256to88	colour.c	/^colour_256to88(u_char c)$/
+colour_fromstring	colour.c	/^colour_fromstring(const char *s)$/
+colour_rgb	colour.c	/^struct colour_rgb {$/
+colour_rgb_distance	colour.c	/^colour_rgb_distance(struct colour_rgb *rgb1, struc/
+colour_rgb_find	colour.c	/^colour_rgb_find(struct colour_rgb *rgb)$/
+colour_rgb_generate256	colour.c	/^colour_rgb_generate256(void)$/
+colour_set_bg	colour.c	/^colour_set_bg(struct grid_cell *gc, int c)$/
+colour_set_fg	colour.c	/^colour_set_fg(struct grid_cell *gc, int c)$/
+colour_tostring	colour.c	/^colour_tostring(int c)$/
+default_window_name	names.c	/^default_window_name(struct window *w)$/
+environ_cmp	environ.c	/^environ_cmp(struct environ_entry *envent1, struct /
+environ_copy	environ.c	/^environ_copy(struct environ *srcenv, struct enviro/
+environ_find	environ.c	/^environ_find(struct environ *env, const char *name/
+environ_free	environ.c	/^environ_free(struct environ *env)$/
+environ_init	environ.c	/^environ_init(struct environ *env)$/
+environ_push	environ.c	/^environ_push(struct environ *env)$/
+environ_put	environ.c	/^environ_put(struct environ *env, const char *var)$/
+environ_set	environ.c	/^environ_set(struct environ *env, const char *name,/
+environ_unset	environ.c	/^environ_unset(struct environ *env, const char *nam/
+environ_update	environ.c	/^environ_update(const char *vars, struct environ *s/
+format_add	format.c	/^format_add(struct format_tree *ft, const char *key/
+format_client	format.c	/^format_client(struct format_tree *ft, struct clien/
+format_cmp	format.c	/^format_cmp(struct format_entry *fe1, struct format/
+format_create	format.c	/^format_create(void)$/
+format_expand	format.c	/^format_expand(struct format_tree *ft, const char */
+format_find	format.c	/^format_find(struct format_tree *ft, const char *ke/
+format_free	format.c	/^format_free(struct format_tree *ft)$/
+format_replace	format.c	/^format_replace(struct format_tree *ft,$/
+format_session	format.c	/^format_session(struct format_tree *ft, struct sess/
+format_window_pane	format.c	/^format_window_pane(struct format_tree *ft, struct /
+format_winlink	format.c	/^format_winlink(struct format_tree *ft, struct sess/
+get_full_path	tmux.c	/^get_full_path(const char *wd, const char *path)$/
+getshell	tmux.c	/^getshell(void)$/
+grid_check_y	grid.c	/^grid_check_y(struct grid *gd, u_int py)$/
+grid_clear	grid.c	/^grid_clear(struct grid *gd, u_int px, u_int py, u_/
+grid_clear_lines	grid.c	/^grid_clear_lines(struct grid *gd, u_int py, u_int /
+grid_collect_history	grid.c	/^grid_collect_history(struct grid *gd)$/
+grid_compare	grid.c	/^grid_compare(struct grid *ga, struct grid *gb)$/
+grid_create	grid.c	/^grid_create(u_int sx, u_int sy, u_int hlimit)$/
+grid_destroy	grid.c	/^grid_destroy(struct grid *gd)$/
+grid_duplicate_lines	grid.c	/^grid_duplicate_lines($/
+grid_expand_line	grid.c	/^grid_expand_line(struct grid *gd, u_int py, u_int /
+grid_expand_line_utf8	grid.c	/^grid_expand_line_utf8(struct grid *gd, u_int py, u/
+grid_get_cell	grid.c	/^grid_get_cell(struct grid *gd, u_int px, u_int py)/
+grid_get_utf8	grid.c	/^grid_get_utf8(struct grid *gd, u_int px, u_int py)/
+grid_move_cells	grid.c	/^grid_move_cells(struct grid *gd, u_int dx, u_int p/
+grid_move_lines	grid.c	/^grid_move_lines(struct grid *gd, u_int dy, u_int p/
+grid_peek_cell	grid.c	/^grid_peek_cell(struct grid *gd, u_int px, u_int py/
+grid_peek_utf8	grid.c	/^grid_peek_utf8(struct grid *gd, u_int px, u_int py/
+grid_put_cell	grid.c	/^#define grid_put_cell(gd, px, py, gc) do {			\\$/
+grid_put_utf8	grid.c	/^#define grid_put_utf8(gd, px, py, gc) do {			\\$/
+grid_scroll_history	grid.c	/^grid_scroll_history(struct grid *gd)$/
+grid_scroll_history_region	grid.c	/^grid_scroll_history_region(struct grid *gd, u_int /
+grid_set_cell	grid.c	/^grid_set_cell($/
+grid_set_utf8	grid.c	/^grid_set_utf8($/
+grid_string_cells	grid.c	/^grid_string_cells(struct grid *gd, u_int px, u_int/
+grid_utf8_append	grid-utf8.c	/^grid_utf8_append(struct grid_utf8 *gu, const struc/
+grid_utf8_compare	grid-utf8.c	/^grid_utf8_compare(const struct grid_utf8 *gu1, con/
+grid_utf8_copy	grid-utf8.c	/^grid_utf8_copy(const struct grid_utf8 *gu, char *b/
+grid_utf8_set	grid-utf8.c	/^grid_utf8_set(struct grid_utf8 *gu, const struct u/
+grid_utf8_size	grid-utf8.c	/^grid_utf8_size(const struct grid_utf8 *gu)$/
+grid_view_clear	grid-view.c	/^grid_view_clear(struct grid *gd, u_int px, u_int p/
+grid_view_clear_history	grid-view.c	/^grid_view_clear_history(struct grid *gd)$/
+grid_view_delete_cells	grid-view.c	/^grid_view_delete_cells(struct grid *gd, u_int px, /
+grid_view_delete_lines	grid-view.c	/^grid_view_delete_lines(struct grid *gd, u_int py, /
+grid_view_delete_lines_region	grid-view.c	/^grid_view_delete_lines_region(struct grid *gd, u_i/
+grid_view_get_cell	grid-view.c	/^grid_view_get_cell(struct grid *gd, u_int px, u_in/
+grid_view_get_utf8	grid-view.c	/^grid_view_get_utf8(struct grid *gd, u_int px, u_in/
+grid_view_insert_cells	grid-view.c	/^grid_view_insert_cells(struct grid *gd, u_int px, /
+grid_view_insert_lines	grid-view.c	/^grid_view_insert_lines(struct grid *gd, u_int py, /
+grid_view_insert_lines_region	grid-view.c	/^grid_view_insert_lines_region(struct grid *gd, u_i/
+grid_view_peek_cell	grid-view.c	/^grid_view_peek_cell(struct grid *gd, u_int px, u_i/
+grid_view_peek_utf8	grid-view.c	/^grid_view_peek_utf8(struct grid *gd, u_int px, u_i/
+grid_view_scroll_region_down	grid-view.c	/^grid_view_scroll_region_down(struct grid *gd, u_in/
+grid_view_scroll_region_up	grid-view.c	/^grid_view_scroll_region_up(struct grid *gd, u_int /
+grid_view_set_cell	grid-view.c	/^grid_view_set_cell($/
+grid_view_set_utf8	grid-view.c	/^grid_view_set_utf8($/
+grid_view_string_cells	grid-view.c	/^grid_view_string_cells(struct grid *gd, u_int px, /
+grid_view_x	grid-view.c	/^#define grid_view_x(gd, x) (x)$/
+grid_view_y	grid-view.c	/^#define grid_view_y(gd, y) ((gd)->hsize + (y))$/
+input_c0_dispatch	input.c	/^input_c0_dispatch(struct input_ctx *ictx)$/
+input_clear	input.c	/^input_clear(struct input_ctx *ictx)$/
+input_csi_dispatch	input.c	/^input_csi_dispatch(struct input_ctx *ictx)$/
+input_csi_dispatch_sgr	input.c	/^input_csi_dispatch_sgr(struct input_ctx *ictx)$/
+input_csi_type	input.c	/^enum input_csi_type {$/
+input_dcs_dispatch	input.c	/^input_dcs_dispatch(struct input_ctx *ictx)$/
+input_enter_apc	input.c	/^input_enter_apc(struct input_ctx *ictx)$/
+input_enter_osc	input.c	/^input_enter_osc(struct input_ctx *ictx)$/
+input_enter_rename	input.c	/^input_enter_rename(struct input_ctx *ictx)$/
+input_esc_dispatch	input.c	/^input_esc_dispatch(struct input_ctx *ictx)$/
+input_esc_type	input.c	/^enum input_esc_type {$/
+input_exit_apc	input.c	/^input_exit_apc(struct input_ctx *ictx)$/
+input_exit_osc	input.c	/^input_exit_osc(struct input_ctx *ictx)$/
+input_exit_rename	input.c	/^input_exit_rename(struct input_ctx *ictx)$/
+input_free	input.c	/^input_free(unused struct window_pane *wp)$/
+input_get	input.c	/^input_get(struct input_ctx *ictx, u_int validx, in/
+input_init	input.c	/^input_init(struct window_pane *wp)$/
+input_input	input.c	/^input_input(struct input_ctx *ictx)$/
+input_intermediate	input.c	/^input_intermediate(struct input_ctx *ictx)$/
+input_key	input-keys.c	/^input_key(struct window_pane *wp, int key)$/
+input_key_ent	input-keys.c	/^struct input_key_ent {$/
+input_mouse	input-keys.c	/^input_mouse(struct window_pane *wp, struct mouse_e/
+input_parameter	input.c	/^input_parameter(struct input_ctx *ictx)$/
+input_parse	input.c	/^input_parse(struct window_pane *wp)$/
+input_print	input.c	/^input_print(struct input_ctx *ictx)$/
+input_reply	input.c	/^input_reply(struct input_ctx *ictx, const char *fm/
+input_split	input.c	/^input_split(struct input_ctx *ictx)$/
+input_state	input.c	/^struct input_state {$/
+input_table_compare	input.c	/^input_table_compare(const void *key, const void *v/
+input_table_entry	input.c	/^struct input_table_entry {$/
+input_transition	input.c	/^struct input_transition {$/
+input_utf8_add	input.c	/^input_utf8_add(struct input_ctx *ictx)$/
+input_utf8_close	input.c	/^input_utf8_close(struct input_ctx *ictx)$/
+input_utf8_open	input.c	/^input_utf8_open(struct input_ctx *ictx)$/
+is_runnable	osdep-dragonfly.c	/^#define is_runnable(p) \\$/
+is_stopped	osdep-dragonfly.c	/^#define is_stopped(p) \\$/
+job_callback	job.c	/^job_callback(unused struct bufferevent *bufev, unu/
+job_died	job.c	/^job_died(struct job *job, int status)$/
+job_free	job.c	/^job_free(struct job *job)$/
+job_run	job.c	/^job_run(const char *cmd,$/
+key_bindings_add	key-bindings.c	/^key_bindings_add(int key, int can_repeat, struct c/
+key_bindings_clean	key-bindings.c	/^key_bindings_clean(void)$/
+key_bindings_cmp	key-bindings.c	/^key_bindings_cmp(struct key_binding *bd1, struct k/
+key_bindings_dispatch	key-bindings.c	/^key_bindings_dispatch(struct key_binding *bd, stru/
+key_bindings_error	key-bindings.c	/^key_bindings_error(struct cmd_ctx *ctx, const char/
+key_bindings_info	key-bindings.c	/^key_bindings_info(struct cmd_ctx *ctx, const char /
+key_bindings_init	key-bindings.c	/^key_bindings_init(void)$/
+key_bindings_lookup	key-bindings.c	/^key_bindings_lookup(int key)$/
+key_bindings_print	key-bindings.c	/^key_bindings_print(struct cmd_ctx *ctx, const char/
+key_bindings_remove	key-bindings.c	/^key_bindings_remove(int key)$/
+key_string_get_modifiers	key-string.c	/^key_string_get_modifiers(const char **string)$/
+key_string_lookup_key	key-string.c	/^key_string_lookup_key(int key)$/
+key_string_lookup_string	key-string.c	/^key_string_lookup_string(const char *string)$/
+key_string_search_table	key-string.c	/^key_string_search_table(const char *string)$/
+layout_append	layout-custom.c	/^layout_append(struct layout_cell *lc, char *buf, s/
+layout_assign	layout-custom.c	/^layout_assign(struct window_pane **wp, struct layo/
+layout_assign_pane	layout.c	/^layout_assign_pane(struct layout_cell *lc, struct /
+layout_checksum	layout-custom.c	/^layout_checksum(const char *layout)$/
+layout_close_pane	layout.c	/^layout_close_pane(struct window_pane *wp)$/
+layout_construct	layout-custom.c	/^layout_construct(struct layout_cell *lcparent, con/
+layout_count_cells	layout.c	/^layout_count_cells(struct layout_cell *lc)$/
+layout_create_cell	layout.c	/^layout_create_cell(struct layout_cell *lcparent)$/
+layout_destroy_cell	layout.c	/^layout_destroy_cell(struct layout_cell *lc, struct/
+layout_dump	layout-custom.c	/^layout_dump(struct window *w)$/
+layout_find_bottomright	layout-custom.c	/^layout_find_bottomright(struct layout_cell *lc)$/
+layout_fix_offsets	layout.c	/^layout_fix_offsets(struct layout_cell *lc)$/
+layout_fix_panes	layout.c	/^layout_fix_panes(struct window *w, u_int wsx, u_in/
+layout_free	layout.c	/^layout_free(struct window *w)$/
+layout_free_cell	layout.c	/^layout_free_cell(struct layout_cell *lc)$/
+layout_init	layout.c	/^layout_init(struct window *w)$/
+layout_make_leaf	layout.c	/^layout_make_leaf(struct layout_cell *lc, struct wi/
+layout_make_node	layout.c	/^layout_make_node(struct layout_cell *lc, enum layo/
+layout_parse	layout-custom.c	/^layout_parse(struct window *w, const char *layout)/
+layout_print_cell	layout.c	/^layout_print_cell(struct layout_cell *lc, const ch/
+layout_resize	layout.c	/^layout_resize(struct window *w, u_int sx, u_int sy/
+layout_resize_adjust	layout.c	/^layout_resize_adjust(struct layout_cell *lc, enum /
+layout_resize_check	layout.c	/^layout_resize_check(struct layout_cell *lc, enum l/
+layout_resize_pane	layout.c	/^layout_resize_pane(struct window_pane *wp, enum la/
+layout_resize_pane_grow	layout.c	/^layout_resize_pane_grow($/
+layout_resize_pane_mouse	layout.c	/^layout_resize_pane_mouse(struct client *c, struct /
+layout_resize_pane_shrink	layout.c	/^layout_resize_pane_shrink($/
+layout_set_even_h	layout-set.c	/^layout_set_even_h(struct window *w)$/
+layout_set_even_v	layout-set.c	/^layout_set_even_v(struct window *w)$/
+layout_set_lookup	layout-set.c	/^layout_set_lookup(const char *name)$/
+layout_set_main_h	layout-set.c	/^layout_set_main_h(struct window *w)$/
+layout_set_main_v	layout-set.c	/^layout_set_main_v(struct window *w)$/
+layout_set_name	layout-set.c	/^layout_set_name(u_int layout)$/
+layout_set_next	layout-set.c	/^layout_set_next(struct window *w)$/
+layout_set_previous	layout-set.c	/^layout_set_previous(struct window *w)$/
+layout_set_select	layout-set.c	/^layout_set_select(struct window *w, u_int layout)$/
+layout_set_size	layout.c	/^layout_set_size($/
+layout_set_tiled	layout-set.c	/^layout_set_tiled(struct window *w)$/
+layout_split_pane	layout.c	/^layout_split_pane(struct window_pane *wp, enum lay/
+load_cfg	cfg.c	/^load_cfg(const char *path, struct cmd_ctx *ctxin, /
+log_close	log.c	/^log_close(void)$/
+log_debug	log.c	/^log_debug(const char *msg, ...)$/
+log_debug2	log.c	/^log_debug2(const char *msg, ...)$/
+log_fatal	log.c	/^log_fatal(const char *msg, ...)$/
+log_fatalx	log.c	/^log_fatalx(const char *msg, ...)$/
+log_info	log.c	/^log_info(const char *msg, ...)$/
+log_open_file	log.c	/^log_open_file(int level, const char *path)$/
+log_open_tty	log.c	/^log_open_tty(int level)$/
+log_vfatal	log.c	/^log_vfatal(const char *msg, va_list ap)$/
+log_vwrite	log.c	/^log_vwrite(int pri, const char *msg, va_list ap)$/
+log_warn	log.c	/^log_warn(const char *msg, ...)$/
+log_warnx	log.c	/^log_warnx(const char *msg, ...)$/
+logfile	tmux.c	/^logfile(const char *name)$/
+makesocketpath	tmux.c	/^makesocketpath(const char *label)$/
+mode_key_cmp	mode-key.c	/^mode_key_cmp(struct mode_key_binding *mbind1, stru/
+mode_key_findtable	mode-key.c	/^mode_key_findtable(const char *name)$/
+mode_key_init	mode-key.c	/^mode_key_init(struct mode_key_data *mdata, struct /
+mode_key_init_trees	mode-key.c	/^mode_key_init_trees(void)$/
+mode_key_tostring	mode-key.c	/^mode_key_tostring(const struct mode_key_cmdstr *cm/
+nitems	osdep-dragonfly.c	/^#define nitems(_a) (sizeof((_a)) \/ sizeof((_a)[0]/
+ode_key_fromstring	mode-key.c	/^mode_key_fromstring(const struct mode_key_cmdstr */
+ode_key_lookup	mode-key.c	/^mode_key_lookup(struct mode_key_data *mdata, int k/
+options_cmp	options.c	/^options_cmp(struct options_entry *o1, struct optio/
+options_find	options.c	/^options_find(struct options *oo, const char *name)/
+options_find1	options.c	/^options_find1(struct options *oo, const char *name/
+options_free	options.c	/^options_free(struct options *oo)$/
+options_get_number	options.c	/^options_get_number(struct options *oo, const char /
+options_get_string	options.c	/^options_get_string(struct options *oo, const char /
+options_init	options.c	/^options_init(struct options *oo, struct options *p/
+options_remove	options.c	/^options_remove(struct options *oo, const char *nam/
+options_set_number	options.c	/^options_set_number(struct options *oo, const char /
+options_set_string	options.c	/^options_set_string(struct options *oo, const char /
+options_table_populate_tree	options-table.c	/^options_table_populate_tree($/
+options_table_print_entry	options-table.c	/^options_table_print_entry($/
+osdep_event_init	osdep-aix.c	/^osdep_event_init(void)$/
+osdep_get_cwd	osdep-aix.c	/^osdep_get_cwd(pid_t pid)$/
+osdep_get_name	osdep-aix.c	/^osdep_get_name(unused int fd, unused char *tty)$/
+parse_window_name	names.c	/^parse_window_name(const char *in)$/
+parseenvironment	tmux.c	/^parseenvironment(void)$/
+paste_add	paste.c	/^paste_add(struct paste_stack *ps, char *data, size/
+paste_free_index	paste.c	/^paste_free_index(struct paste_stack *ps, u_int idx/
+paste_free_top	paste.c	/^paste_free_top(struct paste_stack *ps)$/
+paste_get_index	paste.c	/^paste_get_index(struct paste_stack *ps, u_int idx)/
+paste_get_top	paste.c	/^paste_get_top(struct paste_stack *ps)$/
+paste_print	paste.c	/^paste_print(struct paste_buffer *pb, size_t width)/
+paste_replace	paste.c	/^paste_replace(struct paste_stack *ps, u_int idx, c/
+paste_walk_stack	paste.c	/^paste_walk_stack(struct paste_stack *ps, u_int *id/
+queue_window_name	names.c	/^queue_window_name(struct window *w)$/
+recalculate_sizes	resize.c	/^recalculate_sizes(void)$/
+ring_bell	server-window.c	/^ring_bell(struct session *s)$/
+screen_check_selection	screen.c	/^screen_check_selection(struct screen *s, u_int px,/
+screen_clear_selection	screen.c	/^screen_clear_selection(struct screen *s)$/
+screen_free	screen.c	/^screen_free(struct screen *s)$/
+screen_init	screen.c	/^screen_init(struct screen *s, u_int sx, u_int sy, /
+screen_redraw_cell_border	screen-redraw.c	/^screen_redraw_cell_border(struct client *c, u_int /
+screen_redraw_cell_border1	screen-redraw.c	/^screen_redraw_cell_border1(struct window_pane *wp,/
+screen_redraw_check_cell	screen-redraw.c	/^screen_redraw_check_cell(struct client *c, u_int p/
+screen_redraw_draw_number	screen-redraw.c	/^screen_redraw_draw_number(struct client *c, struct/
+screen_redraw_pane	screen-redraw.c	/^screen_redraw_pane(struct client *c, struct window/
+screen_redraw_screen	screen-redraw.c	/^screen_redraw_screen(struct client *c, int status_/
+screen_reinit	screen.c	/^screen_reinit(struct screen *s)$/
+screen_reset_tabs	screen.c	/^screen_reset_tabs(struct screen *s)$/
+screen_resize	screen.c	/^screen_resize(struct screen *s, u_int sx, u_int sy/
+screen_resize_x	screen.c	/^screen_resize_x(struct screen *s, u_int sx)$/
+screen_resize_y	screen.c	/^screen_resize_y(struct screen *s, u_int sy)$/
+screen_set_cursor_colour	screen.c	/^screen_set_cursor_colour(struct screen *s, const c/
+screen_set_cursor_style	screen.c	/^screen_set_cursor_style(struct screen *s, u_int st/
+screen_set_selection	screen.c	/^screen_set_selection(struct screen *s, u_int sx, u/
+screen_set_title	screen.c	/^screen_set_title(struct screen *s, const char *tit/
+screen_write_alignmenttest	screen-write.c	/^screen_write_alignmenttest(struct screen_write_ctx/
+screen_write_backspace	screen-write.c	/^screen_write_backspace(struct screen_write_ctx *ct/
+screen_write_carriagereturn	screen-write.c	/^screen_write_carriagereturn(struct screen_write_ct/
+screen_write_cell	screen-write.c	/^screen_write_cell(struct screen_write_ctx *ctx,$/
+screen_write_clearendofline	screen-write.c	/^screen_write_clearendofline(struct screen_write_ct/
+screen_write_clearendofscreen	screen-write.c	/^screen_write_clearendofscreen(struct screen_write_/
+screen_write_clearhistory	screen-write.c	/^screen_write_clearhistory(struct screen_write_ctx /
+screen_write_clearline	screen-write.c	/^screen_write_clearline(struct screen_write_ctx *ct/
+screen_write_clearscreen	screen-write.c	/^screen_write_clearscreen(struct screen_write_ctx */
+screen_write_clearstartofline	screen-write.c	/^screen_write_clearstartofline(struct screen_write_/
+screen_write_clearstartofscreen	screen-write.c	/^screen_write_clearstartofscreen(struct screen_writ/
+screen_write_cnputs	screen-write.c	/^screen_write_cnputs(struct screen_write_ctx *ctx,$/
+screen_write_combine	screen-write.c	/^screen_write_combine($/
+screen_write_copy	screen-write.c	/^screen_write_copy(struct screen_write_ctx *ctx,$/
+screen_write_cstrlen	screen-write.c	/^screen_write_cstrlen(int utf8flag, const char *fmt/
+screen_write_cursordown	screen-write.c	/^screen_write_cursordown(struct screen_write_ctx *c/
+screen_write_cursorleft	screen-write.c	/^screen_write_cursorleft(struct screen_write_ctx *c/
+screen_write_cursormode	screen-write.c	/^screen_write_cursormode(struct screen_write_ctx *c/
+screen_write_cursormove	screen-write.c	/^screen_write_cursormove(struct screen_write_ctx *c/
+screen_write_cursorright	screen-write.c	/^screen_write_cursorright(struct screen_write_ctx */
+screen_write_cursorup	screen-write.c	/^screen_write_cursorup(struct screen_write_ctx *ctx/
+screen_write_deletecharacter	screen-write.c	/^screen_write_deletecharacter(struct screen_write_c/
+screen_write_deleteline	screen-write.c	/^screen_write_deleteline(struct screen_write_ctx *c/
+screen_write_initctx	screen-write.c	/^screen_write_initctx($/
+screen_write_insertcharacter	screen-write.c	/^screen_write_insertcharacter(struct screen_write_c/
+screen_write_insertline	screen-write.c	/^screen_write_insertline(struct screen_write_ctx *c/
+screen_write_insertmode	screen-write.c	/^screen_write_insertmode(struct screen_write_ctx *c/
+screen_write_kcursormode	screen-write.c	/^screen_write_kcursormode(struct screen_write_ctx */
+screen_write_kkeypadmode	screen-write.c	/^screen_write_kkeypadmode(struct screen_write_ctx */
+screen_write_linefeed	screen-write.c	/^screen_write_linefeed(struct screen_write_ctx *ctx/
+screen_write_mousemode_off	screen-write.c	/^screen_write_mousemode_off(struct screen_write_ctx/
+screen_write_mousemode_on	screen-write.c	/^screen_write_mousemode_on(struct screen_write_ctx /
+screen_write_nputs	screen-write.c	/^screen_write_nputs(struct screen_write_ctx *ctx,$/
+screen_write_overwrite	screen-write.c	/^screen_write_overwrite(struct screen_write_ctx *ct/
+screen_write_parsestyle	screen-write.c	/^screen_write_parsestyle($/
+screen_write_putc	screen-write.c	/^screen_write_putc($/
+screen_write_puts	screen-write.c	/^screen_write_puts($/
+screen_write_rawstring	screen-write.c	/^screen_write_rawstring(struct screen_write_ctx *ct/
+screen_write_reset	screen-write.c	/^screen_write_reset(struct screen_write_ctx *ctx)$/
+screen_write_reverseindex	screen-write.c	/^screen_write_reverseindex(struct screen_write_ctx /
+screen_write_scrollregion	screen-write.c	/^screen_write_scrollregion($/
+screen_write_setselection	screen-write.c	/^screen_write_setselection(struct screen_write_ctx /
+screen_write_start	screen-write.c	/^screen_write_start($/
+screen_write_stop	screen-write.c	/^screen_write_stop(unused struct screen_write_ctx */
+screen_write_strlen	screen-write.c	/^screen_write_strlen(int utf8flag, const char *fmt,/
+screen_write_utf8mousemode	screen-write.c	/^screen_write_utf8mousemode(struct screen_write_ctx/
+screen_write_vnputs	screen-write.c	/^screen_write_vnputs(struct screen_write_ctx *ctx, /
+server_accept_callback	server.c	/^server_accept_callback(int fd, short events, unuse/
+server_callback_identify	server-fn.c	/^server_callback_identify(unused int fd, unused sho/
+server_check_unattached	server-fn.c	/^server_check_unattached (void)$/
+server_child_exited	server.c	/^server_child_exited(pid_t pid, int status)$/
+server_child_signal	server.c	/^server_child_signal(void)$/
+server_child_stopped	server.c	/^server_child_stopped(pid_t pid, int status)$/
+server_clean_dead	server.c	/^server_clean_dead(void)$/
+server_clear_identify	server-fn.c	/^server_clear_identify(struct client *c)$/
+server_client_callback	server-client.c	/^server_client_callback(int fd, short events, void /
+server_client_check_exit	server-client.c	/^server_client_check_exit(struct client *c)$/
+server_client_check_redraw	server-client.c	/^server_client_check_redraw(struct client *c)$/
+server_client_create	server-client.c	/^server_client_create(int fd)$/
+server_client_err_callback	server-client.c	/^server_client_err_callback($/
+server_client_handle_key	server-client.c	/^server_client_handle_key(int key, struct mouse_eve/
+server_client_in_callback	server-client.c	/^server_client_in_callback($/
+server_client_loop	server-client.c	/^server_client_loop(void)$/
+server_client_lost	server-client.c	/^server_client_lost(struct client *c)$/
+server_client_msg_command	server-client.c	/^server_client_msg_command(struct client *c, struct/
+server_client_msg_dispatch	server-client.c	/^server_client_msg_dispatch(struct client *c)$/
+server_client_msg_error	server-client.c	/^server_client_msg_error(struct cmd_ctx *ctx, const/
+server_client_msg_identify	server-client.c	/^server_client_msg_identify($/
+server_client_msg_info	server-client.c	/^server_client_msg_info(struct cmd_ctx *ctx, const /
+server_client_msg_print	server-client.c	/^server_client_msg_print(struct cmd_ctx *ctx, const/
+server_client_msg_shell	server-client.c	/^server_client_msg_shell(struct client *c)$/
+server_client_out_callback	server-client.c	/^server_client_out_callback($/
+server_client_repeat_timer	server-client.c	/^server_client_repeat_timer(unused int fd, unused s/
+server_client_reset_state	server-client.c	/^server_client_reset_state(struct client *c)$/
+server_client_set_title	server-client.c	/^server_client_set_title(struct client *c)$/
+server_client_status_timer	server-client.c	/^server_client_status_timer(void)$/
+server_create_socket	server.c	/^server_create_socket(void)$/
+server_destroy_pane	server-fn.c	/^server_destroy_pane(struct window_pane *wp)$/
+server_destroy_session	server-fn.c	/^server_destroy_session(struct session *s)$/
+server_destroy_session_group	server-fn.c	/^server_destroy_session_group(struct session *s)$/
+server_fill_environ	server-fn.c	/^server_fill_environ(struct session *s, struct envi/
+server_kill_window	server-fn.c	/^server_kill_window(struct window *w)$/
+server_link_window	server-fn.c	/^server_link_window(struct session *src, struct win/
+server_lock	server-fn.c	/^server_lock(void)$/
+server_lock_client	server-fn.c	/^server_lock_client(struct client *c)$/
+server_lock_server	server.c	/^server_lock_server(void)$/
+server_lock_session	server-fn.c	/^server_lock_session(struct session *s)$/
+server_lock_sessions	server.c	/^server_lock_sessions(void)$/
+server_loop	server.c	/^server_loop(void)$/
+server_next_session	server-fn.c	/^server_next_session(struct session *s)$/
+server_redraw_client	server-fn.c	/^server_redraw_client(struct client *c)$/
+server_redraw_session	server-fn.c	/^server_redraw_session(struct session *s)$/
+server_redraw_session_group	server-fn.c	/^server_redraw_session_group(struct session *s)$/
+server_redraw_window	server-fn.c	/^server_redraw_window(struct window *w)$/
+server_redraw_window_borders	server-fn.c	/^server_redraw_window_borders(struct window *w)$/
+server_second_callback	server.c	/^server_second_callback(unused int fd, unused short/
+server_send_shutdown	server.c	/^server_send_shutdown(void)$/
+server_set_identify	server-fn.c	/^server_set_identify(struct client *c)$/
+server_should_shutdown	server.c	/^server_should_shutdown(void)$/
+server_signal_callback	server.c	/^server_signal_callback(int sig, unused short event/
+server_start	server.c	/^server_start(void)$/
+server_status_client	server-fn.c	/^server_status_client(struct client *c)$/
+server_status_session	server-fn.c	/^server_status_session(struct session *s)$/
+server_status_session_group	server-fn.c	/^server_status_session_group(struct session *s)$/
+server_status_window	server-fn.c	/^server_status_window(struct window *w)$/
+server_unlink_window	server-fn.c	/^server_unlink_window(struct session *s, struct win/
+server_update_event	server-fn.c	/^server_update_event(struct client *c)$/
+server_update_socket	server.c	/^server_update_socket(void)$/
+server_window_check_activity	server-window.c	/^server_window_check_activity(struct session *s, st/
+server_window_check_bell	server-window.c	/^server_window_check_bell(struct session *s, struct/
+server_window_check_content	server-window.c	/^server_window_check_content($/
+server_window_check_silence	server-window.c	/^server_window_check_silence(struct session *s, str/
+server_window_loop	server-window.c	/^server_window_loop(void)$/
+server_write_client	server-fn.c	/^server_write_client($/
+server_write_session	server-fn.c	/^server_write_session($/
+session_alive	session.c	/^session_alive(struct session *s)$/
+session_attach	session.c	/^session_attach(struct session *s, struct window *w/
+session_check_name	session.c	/^session_check_name(const char *name)$/
+session_cmp	session.c	/^session_cmp(struct session *s1, struct session *s2/
+session_create	session.c	/^session_create(const char *name, const char *cmd, /
+session_destroy	session.c	/^session_destroy(struct session *s)$/
+session_detach	session.c	/^session_detach(struct session *s, struct winlink */
+session_find	session.c	/^session_find(const char *name)$/
+session_find_by_index	session.c	/^session_find_by_index(u_int idx)$/
+session_group_add	session.c	/^session_group_add(struct session *target, struct s/
+session_group_find	session.c	/^session_group_find(struct session *target)$/
+session_group_index	session.c	/^session_group_index(struct session_group *sg)$/
+session_group_remove	session.c	/^session_group_remove(struct session *s)$/
+session_group_synchronize1	session.c	/^session_group_synchronize1(struct session *target,/
+session_group_synchronize_from	session.c	/^session_group_synchronize_from(struct session *tar/
+session_group_synchronize_to	session.c	/^session_group_synchronize_to(struct session *s)$/
+session_has	session.c	/^session_has(struct session *s, struct window *w)$/
+session_last	session.c	/^session_last(struct session *s)$/
+session_new	session.c	/^session_new(struct session *s,$/
+session_next	session.c	/^session_next(struct session *s, int alert)$/
+session_next_alert	session.c	/^session_next_alert(struct winlink *wl)$/
+session_next_session	session.c	/^session_next_session(struct session *s)$/
+session_previous	session.c	/^session_previous(struct session *s, int alert)$/
+session_previous_alert	session.c	/^session_previous_alert(struct winlink *wl)$/
+session_previous_session	session.c	/^session_previous_session(struct session *s)$/
+session_select	session.c	/^session_select(struct session *s, int idx)$/
+session_update_activity	session.c	/^session_update_activity(struct session *s)$/
+set_signals	signal.c	/^set_signals(void(*handler)(int, short, unused void/
+setblocking	tmux.c	/^setblocking(int fd, int state)$/
+shell_exec	tmux.c	/^shell_exec(const char *shell, const char *shellcmd/
+status_find_job	status.c	/^status_find_job(struct client *c, char **iptr)$/
+status_free_jobs	status.c	/^status_free_jobs(struct status_out_tree *sotree)$/
+status_job_callback	status.c	/^status_job_callback(struct job *job)$/
+status_job_free	status.c	/^status_job_free(void *data)$/
+status_message_callback	status.c	/^status_message_callback(unused int fd, unused shor/
+status_message_clear	status.c	/^status_message_clear(struct client *c)$/
+status_message_redraw	status.c	/^status_message_redraw(struct client *c)$/
+status_message_set	status.c	/^status_message_set(struct client *c, const char *f/
+status_print	status.c	/^status_print($/
+status_prompt_add_history	status.c	/^status_prompt_add_history(const char *line)$/
+status_prompt_clear	status.c	/^status_prompt_clear(struct client *c)$/
+status_prompt_complete	status.c	/^status_prompt_complete(const char *s)$/
+status_prompt_down_history	status.c	/^status_prompt_down_history(u_int *idx)$/
+status_prompt_key	status.c	/^status_prompt_key(struct client *c, int key)$/
+status_prompt_redraw	status.c	/^status_prompt_redraw(struct client *c)$/
+status_prompt_set	status.c	/^status_prompt_set(struct client *c, const char *ms/
+status_prompt_up_history	status.c	/^status_prompt_up_history(u_int *idx)$/
+status_prompt_update	status.c	/^status_prompt_update(struct client *c, const char /
+status_redraw	status.c	/^status_redraw(struct client *c)$/
+status_redraw_get_left	status.c	/^status_redraw_get_left(struct client *c,$/
+status_redraw_get_right	status.c	/^status_redraw_get_right(struct client *c,$/
+status_replace	status.c	/^status_replace(struct client *c, struct session *s/
+status_replace1	status.c	/^status_replace1(struct client *c, struct session */
+status_set_window_at	status.c	/^status_set_window_at(struct client *c, u_int x)$/
+status_update_jobs	status.c	/^status_update_jobs(struct client *c)$/
+tty_acs_cmp	tty-acs.c	/^tty_acs_cmp(const void *key, const void *value)$/
+tty_acs_entry	tty-acs.c	/^struct tty_acs_entry {$/
+tty_acs_get	tty-acs.c	/^tty_acs_get(struct tty *tty, u_char ch)$/
+tty_attributes	tty.c	/^tty_attributes(struct tty *tty, const struct grid_/
+tty_bell	tty.c	/^tty_bell(struct tty *tty)$/
+tty_cell	tty.c	/^tty_cell($/
+tty_check_bg	tty.c	/^tty_check_bg(struct tty *tty, struct grid_cell *gc/
+tty_check_fg	tty.c	/^tty_check_fg(struct tty *tty, struct grid_cell *gc/
+tty_close	tty.c	/^tty_close(struct tty *tty)$/
+tty_cmd_alignmenttest	tty.c	/^tty_cmd_alignmenttest(struct tty *tty, const struc/
+tty_cmd_cell	tty.c	/^tty_cmd_cell(struct tty *tty, const struct tty_ctx/
+tty_cmd_clearendofline	tty.c	/^tty_cmd_clearendofline(struct tty *tty, const stru/
+tty_cmd_clearendofscreen	tty.c	/^tty_cmd_clearendofscreen(struct tty *tty, const st/
+tty_cmd_clearline	tty.c	/^tty_cmd_clearline(struct tty *tty, const struct tt/
+tty_cmd_clearscreen	tty.c	/^tty_cmd_clearscreen(struct tty *tty, const struct /
+tty_cmd_clearstartofline	tty.c	/^tty_cmd_clearstartofline(struct tty *tty, const st/
+tty_cmd_clearstartofscreen	tty.c	/^tty_cmd_clearstartofscreen(struct tty *tty, const /
+tty_cmd_deletecharacter	tty.c	/^tty_cmd_deletecharacter(struct tty *tty, const str/
+tty_cmd_deleteline	tty.c	/^tty_cmd_deleteline(struct tty *tty, const struct t/
+tty_cmd_insertcharacter	tty.c	/^tty_cmd_insertcharacter(struct tty *tty, const str/
+tty_cmd_insertline	tty.c	/^tty_cmd_insertline(struct tty *tty, const struct t/
+tty_cmd_linefeed	tty.c	/^tty_cmd_linefeed(struct tty *tty, const struct tty/
+tty_cmd_rawstring	tty.c	/^tty_cmd_rawstring(struct tty *tty, const struct tt/
+tty_cmd_reverseindex	tty.c	/^tty_cmd_reverseindex(struct tty *tty, const struct/
+tty_cmd_setselection	tty.c	/^tty_cmd_setselection(struct tty *tty, const struct/
+tty_cmd_utf8character	tty.c	/^tty_cmd_utf8character(struct tty *tty, const struc/
+tty_colours	tty.c	/^tty_colours(struct tty *tty, const struct grid_cel/
+tty_colours_bg	tty.c	/^tty_colours_bg(struct tty *tty, const struct grid_/
+tty_colours_fg	tty.c	/^tty_colours_fg(struct tty *tty, const struct grid_/
+tty_cursor	tty.c	/^tty_cursor(struct tty *tty, u_int cx, u_int cy)$/
+tty_cursor_pane	tty.c	/^tty_cursor_pane(struct tty *tty, const struct tty_/
+tty_draw_line	tty.c	/^tty_draw_line(struct tty *tty, struct screen *s, u/
+tty_emulate_repeat	tty.c	/^tty_emulate_repeat($/
+tty_error_callback	tty.c	/^tty_error_callback($/
+tty_force_cursor_colour	tty.c	/^tty_force_cursor_colour(struct tty *tty, const cha/
+tty_free	tty.c	/^tty_free(struct tty *tty)$/
+tty_init	tty.c	/^tty_init(struct tty *tty, int fd, char *term)$/
+tty_key_ent	tty-keys.c	/^struct tty_key_ent {$/
+tty_keys_add	tty-keys.c	/^tty_keys_add(struct tty *tty, const char *s, int k/
+tty_keys_add1	tty-keys.c	/^tty_keys_add1(struct tty_key **tkp, const char *s,/
+tty_keys_callback	tty-keys.c	/^tty_keys_callback(unused int fd, unused short even/
+tty_keys_find	tty-keys.c	/^tty_keys_find(struct tty *tty, const char *buf, si/
+tty_keys_find1	tty-keys.c	/^tty_keys_find1(struct tty_key *tk, const char *buf/
+tty_keys_free	tty-keys.c	/^tty_keys_free(struct tty *tty)$/
+tty_keys_free1	tty-keys.c	/^tty_keys_free1(struct tty_key *tk)$/
+tty_keys_init	tty-keys.c	/^tty_keys_init(struct tty *tty)$/
+tty_keys_mouse	tty-keys.c	/^tty_keys_mouse(struct tty *tty,$/
+tty_keys_next	tty-keys.c	/^tty_keys_next(struct tty *tty)$/
+tty_open	tty.c	/^tty_open(struct tty *tty, const char *overrides, c/
+tty_putc	tty.c	/^tty_putc(struct tty *tty, u_char ch)$/
+tty_putcode	tty.c	/^tty_putcode(struct tty *tty, enum tty_code_code co/
+tty_putcode1	tty.c	/^tty_putcode1(struct tty *tty, enum tty_code_code c/
+tty_putcode2	tty.c	/^tty_putcode2(struct tty *tty, enum tty_code_code c/
+tty_putcode_ptr1	tty.c	/^tty_putcode_ptr1(struct tty *tty, enum tty_code_co/
+tty_putcode_ptr2	tty.c	/^tty_putcode_ptr2(struct tty *tty, enum tty_code_co/
+tty_puts	tty.c	/^tty_puts(struct tty *tty, const char *s)$/
+tty_pututf8	tty.c	/^tty_pututf8(struct tty *tty, const struct grid_utf/
+tty_raw	tty.c	/^tty_raw(struct tty *tty, const char *s)$/
+tty_read_callback	tty.c	/^tty_read_callback(unused struct bufferevent *bufev/
+tty_redraw_region	tty.c	/^tty_redraw_region(struct tty *tty, const struct tt/
+tty_region	tty.c	/^tty_region(struct tty *tty, u_int rupper, u_int rl/
+tty_region_pane	tty.c	/^tty_region_pane($/
+tty_reset	tty.c	/^tty_reset(struct tty *tty)$/
+tty_resize	tty.c	/^tty_resize(struct tty *tty)$/
+tty_set_title	tty.c	/^tty_set_title(struct tty *tty, const char *title)$/
+tty_start_tty	tty.c	/^tty_start_tty(struct tty *tty)$/
+tty_stop_tty	tty.c	/^tty_stop_tty(struct tty *tty)$/
+tty_term_find	tty-term.c	/^tty_term_find(char *name, int fd, const char *over/
+tty_term_flag	tty-term.c	/^tty_term_flag(struct tty_term *term, enum tty_code/
+tty_term_free	tty-term.c	/^tty_term_free(struct tty_term *term)$/
+tty_term_has	tty-term.c	/^tty_term_has(struct tty_term *term, enum tty_code_/
+tty_term_number	tty-term.c	/^tty_term_number(struct tty_term *term, enum tty_co/
+tty_term_override	tty-term.c	/^tty_term_override(struct tty_term *term, const cha/
+tty_term_ptr1	tty-term.c	/^tty_term_ptr1(struct tty_term *term, enum tty_code/
+tty_term_ptr2	tty-term.c	/^tty_term_ptr2(struct tty_term *term, enum tty_code/
+tty_term_string	tty-term.c	/^tty_term_string(struct tty_term *term, enum tty_co/
+tty_term_string1	tty-term.c	/^tty_term_string1(struct tty_term *term, enum tty_c/
+tty_term_string2	tty-term.c	/^tty_term_string2(struct tty_term *term, enum tty_c/
+tty_term_strip	tty-term.c	/^tty_term_strip(const char *s)$/
+tty_try_256	tty.c	/^tty_try_256(struct tty *tty, u_char colour, const /
+tty_try_88	tty.c	/^tty_try_88(struct tty *tty, u_char colour, const c/
+tty_update_mode	tty.c	/^tty_update_mode(struct tty *tty, int mode, struct /
+tty_use_acs	tty.c	/^#define tty_use_acs(tty) \\$/
+tty_write	tty.c	/^tty_write(void (*cmdfn)($/
+usage	tmux.c	/^usage(void)$/
+utf8_append	utf8.c	/^utf8_append(struct utf8_data *utf8data, u_char ch)/
+utf8_build	utf8.c	/^utf8_build(void)$/
+utf8_combine	utf8.c	/^utf8_combine(const struct utf8_data *utf8data)$/
+utf8_open	utf8.c	/^utf8_open(struct utf8_data *utf8data, u_char ch)$/
+utf8_overlap	utf8.c	/^utf8_overlap($/
+utf8_split2	utf8.c	/^utf8_split2(u_int uc, u_char *ptr)$/
+utf8_width	utf8.c	/^utf8_width(const struct utf8_data *utf8data)$/
+utf8_width_entry	utf8.c	/^struct utf8_width_entry {$/
+window_add_pane	window.c	/^window_add_pane(struct window *w, u_int hlimit)$/
+window_choose_add	window-choose.c	/^window_choose_add(struct window_pane *wp, int idx,/
+window_choose_free	window-choose.c	/^window_choose_free(struct window_pane *wp)$/
+window_choose_index_key	window-choose.c	/^window_choose_index_key(struct window_choose_mode_/
+window_choose_init	window-choose.c	/^window_choose_init(struct window_pane *wp)$/
+window_choose_key	window-choose.c	/^window_choose_key(struct window_pane *wp, unused s/
+window_choose_key_index	window-choose.c	/^window_choose_key_index(struct window_choose_mode_/
+window_choose_mode_data	window-choose.c	/^struct window_choose_mode_data {$/
+window_choose_mode_item	window-choose.c	/^struct window_choose_mode_item {$/
+window_choose_mouse	window-choose.c	/^window_choose_mouse($/
+window_choose_ready	window-choose.c	/^window_choose_ready(struct window_pane *wp, u_int /
+window_choose_redraw_screen	window-choose.c	/^window_choose_redraw_screen(struct window_pane *wp/
+window_choose_resize	window-choose.c	/^window_choose_resize(struct window_pane *wp, u_int/
+window_choose_scroll_down	window-choose.c	/^window_choose_scroll_down(struct window_pane *wp)$/
+window_choose_scroll_up	window-choose.c	/^window_choose_scroll_up(struct window_pane *wp)$/
+window_choose_vadd	window-choose.c	/^window_choose_vadd(struct window_pane *wp, int idx/
+window_choose_write_line	window-choose.c	/^window_choose_write_line($/
+window_clock_draw_screen	window-clock.c	/^window_clock_draw_screen(struct window_pane *wp)$/
+window_clock_free	window-clock.c	/^window_clock_free(struct window_pane *wp)$/
+window_clock_init	window-clock.c	/^window_clock_init(struct window_pane *wp)$/
+window_clock_key	window-clock.c	/^window_clock_key($/
+window_clock_mode_data	window-clock.c	/^struct window_clock_mode_data {$/
+window_clock_resize	window-clock.c	/^window_clock_resize(struct window_pane *wp, u_int /
+window_clock_timer	window-clock.c	/^window_clock_timer(struct window_pane *wp)$/
+window_copy_add	window-copy.c	/^window_copy_add(struct window_pane *wp, const char/
+window_copy_clear_selection	window-copy.c	/^window_copy_clear_selection(struct window_pane *wp/
+window_copy_copy_line	window-copy.c	/^window_copy_copy_line(struct window_pane *wp,$/
+window_copy_copy_selection	window-copy.c	/^window_copy_copy_selection(struct window_pane *wp,/
+window_copy_cursor_back_to_indentation	window-copy.c	/^window_copy_cursor_back_to_indentation(struct wind/
+window_copy_cursor_down	window-copy.c	/^window_copy_cursor_down(struct window_pane *wp, in/
+window_copy_cursor_end_of_line	window-copy.c	/^window_copy_cursor_end_of_line(struct window_pane /
+window_copy_cursor_jump	window-copy.c	/^window_copy_cursor_jump(struct window_pane *wp)$/
+window_copy_cursor_jump_back	window-copy.c	/^window_copy_cursor_jump_back(struct window_pane *w/
+window_copy_cursor_jump_to	window-copy.c	/^window_copy_cursor_jump_to(struct window_pane *wp)/
+window_copy_cursor_jump_to_back	window-copy.c	/^window_copy_cursor_jump_to_back(struct window_pane/
+window_copy_cursor_left	window-copy.c	/^window_copy_cursor_left(struct window_pane *wp)$/
+window_copy_cursor_next_word	window-copy.c	/^window_copy_cursor_next_word(struct window_pane *w/
+window_copy_cursor_next_word_end	window-copy.c	/^window_copy_cursor_next_word_end(struct window_pan/
+window_copy_cursor_previous_word	window-copy.c	/^window_copy_cursor_previous_word(struct window_pan/
+window_copy_cursor_right	window-copy.c	/^window_copy_cursor_right(struct window_pane *wp)$/
+window_copy_cursor_start_of_line	window-copy.c	/^window_copy_cursor_start_of_line(struct window_pan/
+window_copy_cursor_up	window-copy.c	/^window_copy_cursor_up(struct window_pane *wp, int /
+window_copy_find_length	window-copy.c	/^window_copy_find_length(struct window_pane *wp, u_/
+window_copy_free	window-copy.c	/^window_copy_free(struct window_pane *wp)$/
+window_copy_goto_line	window-copy.c	/^window_copy_goto_line(struct window_pane *wp, cons/
+window_copy_in_set	window-copy.c	/^window_copy_in_set(struct window_pane *wp, u_int p/
+window_copy_init	window-copy.c	/^window_copy_init(struct window_pane *wp)$/
+window_copy_init_for_output	window-copy.c	/^window_copy_init_for_output(struct window_pane *wp/
+window_copy_init_from_pane	window-copy.c	/^window_copy_init_from_pane(struct window_pane *wp)/
+window_copy_input_type	window-copy.c	/^enum window_copy_input_type {$/
+window_copy_key	window-copy.c	/^window_copy_key(struct window_pane *wp, struct ses/
+window_copy_key_input	window-copy.c	/^window_copy_key_input(struct window_pane *wp, int /
+window_copy_key_numeric_prefix	window-copy.c	/^window_copy_key_numeric_prefix(struct window_pane /
+window_copy_mode_data	window-copy.c	/^struct window_copy_mode_data {$/
+window_copy_mouse	window-copy.c	/^window_copy_mouse($/
+window_copy_pageup	window-copy.c	/^window_copy_pageup(struct window_pane *wp)$/
+window_copy_rectangle_toggle	window-copy.c	/^window_copy_rectangle_toggle(struct window_pane *w/
+window_copy_redraw_lines	window-copy.c	/^window_copy_redraw_lines(struct window_pane *wp, u/
+window_copy_redraw_screen	window-copy.c	/^window_copy_redraw_screen(struct window_pane *wp)$/
+window_copy_resize	window-copy.c	/^window_copy_resize(struct window_pane *wp, u_int s/
+window_copy_scroll_down	window-copy.c	/^window_copy_scroll_down(struct window_pane *wp, u_/
+window_copy_scroll_to	window-copy.c	/^window_copy_scroll_to(struct window_pane *wp, u_in/
+window_copy_scroll_up	window-copy.c	/^window_copy_scroll_up(struct window_pane *wp, u_in/
+window_copy_search_compare	window-copy.c	/^window_copy_search_compare($/
+window_copy_search_down	window-copy.c	/^window_copy_search_down(struct window_pane *wp, co/
+window_copy_search_lr	window-copy.c	/^window_copy_search_lr(struct grid *gd,$/
+window_copy_search_rl	window-copy.c	/^window_copy_search_rl(struct grid *gd,$/
+window_copy_search_up	window-copy.c	/^window_copy_search_up(struct window_pane *wp, cons/
+window_copy_start_selection	window-copy.c	/^window_copy_start_selection(struct window_pane *wp/
+window_copy_update_cursor	window-copy.c	/^window_copy_update_cursor(struct window_pane *wp, /
+window_copy_update_selection	window-copy.c	/^window_copy_update_selection(struct window_pane *w/
+window_copy_vadd	window-copy.c	/^window_copy_vadd(struct window_pane *wp, const cha/
+window_copy_write_line	window-copy.c	/^window_copy_write_line($/
+window_copy_write_lines	window-copy.c	/^window_copy_write_lines($/
+window_count_panes	window.c	/^window_count_panes(struct window *w)$/
+window_create	window.c	/^window_create(const char *name, const char *cmd, c/
+window_create1	window.c	/^window_create1(u_int sx, u_int sy)$/
+window_destroy	window.c	/^window_destroy(struct window *w)$/
+window_destroy_panes	window.c	/^window_destroy_panes(struct window *w)$/
+window_find_string	window.c	/^window_find_string(struct window *w, const char *s/
+window_get_active_at	window.c	/^window_get_active_at(struct window *w, u_int x, u_/
+window_index	window.c	/^window_index(struct window *s, u_int *i)$/
+window_name_callback	names.c	/^window_name_callback(unused int fd, unused short e/
+window_pane_alternate_off	window.c	/^window_pane_alternate_off(struct window_pane *wp, /
+window_pane_alternate_on	window.c	/^window_pane_alternate_on(struct window_pane *wp, s/
+window_pane_at_index	window.c	/^window_pane_at_index(struct window *w, u_int idx)$/
+window_pane_cmp	window.c	/^window_pane_cmp(struct window_pane *wp1, struct wi/
+window_pane_create	window.c	/^window_pane_create(struct window *w, u_int sx, u_i/
+window_pane_destroy	window.c	/^window_pane_destroy(struct window_pane *wp)$/
+window_pane_error_callback	window.c	/^window_pane_error_callback($/
+window_pane_find_by_id	window.c	/^window_pane_find_by_id(u_int id)$/
+window_pane_find_down	window.c	/^window_pane_find_down(struct window_pane *wp)$/
+window_pane_find_left	window.c	/^window_pane_find_left(struct window_pane *wp)$/
+window_pane_find_right	window.c	/^window_pane_find_right(struct window_pane *wp)$/
+window_pane_find_up	window.c	/^window_pane_find_up(struct window_pane *wp)$/
+window_pane_index	window.c	/^window_pane_index(struct window_pane *wp, u_int *i/
+window_pane_key	window.c	/^window_pane_key(struct window_pane *wp, struct ses/
+window_pane_mouse	window.c	/^window_pane_mouse($/
+window_pane_next_by_number	window.c	/^window_pane_next_by_number(struct window *w, struc/
+window_pane_previous_by_number	window.c	/^window_pane_previous_by_number(struct window *w, s/
+window_pane_read_callback	window.c	/^window_pane_read_callback(unused struct buffereven/
+window_pane_reset_mode	window.c	/^window_pane_reset_mode(struct window_pane *wp)$/
+window_pane_resize	window.c	/^window_pane_resize(struct window_pane *wp, u_int s/
+window_pane_search	window.c	/^window_pane_search(struct window_pane *wp, const c/
+window_pane_set_mode	window.c	/^window_pane_set_mode(struct window_pane *wp, const/
+window_pane_spawn	window.c	/^window_pane_spawn(struct window_pane *wp, const ch/
+window_pane_visible	window.c	/^window_pane_visible(struct window_pane *wp)$/
+window_printable_flags	window.c	/^window_printable_flags(struct session *s, struct w/
+window_remove_pane	window.c	/^window_remove_pane(struct window *w, struct window/
+window_resize	window.c	/^window_resize(struct window *w, u_int sx, u_int sy/
+window_set_active_at	window.c	/^window_set_active_at(struct window *w, u_int x, u_/
+window_set_active_pane	window.c	/^window_set_active_pane(struct window *w, struct wi/
+winlink_add	window.c	/^winlink_add(struct winlinks *wwl, int idx)$/
+winlink_cmp	window.c	/^winlink_cmp(struct winlink *wl1, struct winlink *w/
+winlink_count	window.c	/^winlink_count(struct winlinks *wwl)$/
+winlink_find_by_index	window.c	/^winlink_find_by_index(struct winlinks *wwl, int id/
+winlink_find_by_window	window.c	/^winlink_find_by_window(struct winlinks *wwl, struc/
+winlink_find_by_window_id	window.c	/^winlink_find_by_window_id(struct winlinks *wwl, u_/
+winlink_next	window.c	/^winlink_next(struct winlink *wl)$/
+winlink_next_by_number	window.c	/^winlink_next_by_number(struct winlink *wl, struct /
+winlink_next_index	window.c	/^winlink_next_index(struct winlinks *wwl, int idx)$/
+winlink_previous	window.c	/^winlink_previous(struct winlink *wl)$/
+winlink_previous_by_number	window.c	/^winlink_previous_by_number(struct winlink *wl, str/
+winlink_remove	window.c	/^winlink_remove(struct winlinks *wwl, struct winlin/
+winlink_set_window	window.c	/^winlink_set_window(struct winlink *wl, struct wind/
+winlink_stack_push	window.c	/^winlink_stack_push(struct winlink_stack *stack, st/
+winlink_stack_remove	window.c	/^winlink_stack_remove(struct winlink_stack *stack, /
+xasprintf	xmalloc.c	/^xasprintf(char **ret, const char *fmt, ...)$/
+xcalloc	xmalloc.c	/^xcalloc(size_t nmemb, size_t size)$/
+xfree	xmalloc.c	/^xfree(void *ptr)$/
+xmalloc	xmalloc.c	/^xmalloc(size_t size)$/
+xrealloc	xmalloc.c	/^xrealloc(void *oldptr, size_t nmemb, size_t size)$/
+xsnprintf	xmalloc.c	/^xsnprintf(char *buf, size_t len, const char *fmt, /
+xstrdup	xmalloc.c	/^xstrdup(const char *s)$/
+xterm_keys_entry	xterm-keys.c	/^struct xterm_keys_entry {$/
+xterm_keys_find	xterm-keys.c	/^xterm_keys_find(const char *buf, size_t len, size_/
+xterm_keys_lookup	xterm-keys.c	/^xterm_keys_lookup(int key)$/
+xterm_keys_match	xterm-keys.c	/^xterm_keys_match(const char *template, const char /
+xterm_keys_modifiers	xterm-keys.c	/^xterm_keys_modifiers(const char *template, const c/
+xvasprintf	xmalloc.c	/^xvasprintf(char **ret, const char *fmt, va_list ap/
+xvsnprintf	xmalloc.c	/^xvsnprintf(char *buf, size_t len, const char *fmt,/

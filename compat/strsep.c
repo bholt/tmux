@@ -1,4 +1,4 @@
-/* $Id: strsep.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 /*	$OpenBSD: strsep.c,v 1.6 2005/08/08 08:05:37 espie Exp $	*/
 
 /*-

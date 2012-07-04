@@ -1,4 +1,4 @@
-/* $Id: cmd-list-commands.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -40,7 +40,7 @@ const struct cmd_entry cmd_list_commands_entry = {
 int
 cmd_list_commands_exec(unused struct cmd *self, struct cmd_ctx *ctx)
 {
-	const struct cmd_entry 	      **entryp;
+	const struct cmd_entry	      **entryp;
 
 	for (entryp = cmd_table; *entryp != NULL; entryp++)
 		ctx->print(ctx, "%s %s", (*entryp)->name, (*entryp)->usage);

@@ -1,4 +1,4 @@
-/* $Id: cmd-if-shell.c 2627 2011-10-31 13:55:10Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2009 Tiago Cunha <me@tiagocunha.org>

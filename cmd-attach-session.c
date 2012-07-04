@@ -1,4 +1,4 @@
-/* $Id: cmd-attach-session.c 2665 2012-01-21 19:30:07Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -74,21 +74,28 @@ cmd_attach_session_exec(struct cmd *self, struct cmd_ctx *ctx)
 		}
 
 		ctx->curclient->session = s;
+		if (ctx->curclient->flags & CLIENT_CONTROL) {
+			control_handshake(ctx->curclient);
+			control_notify_attached_session_changed(ctx->curclient);
+		}
 		session_update_activity(s);
 		server_redraw_client(ctx->curclient);
 		s->curw->flags &= ~WINLINK_ALERTFLAGS;
 	} else {
-		if (!(ctx->cmdclient->flags & CLIENT_TERMINAL)) {
+		if (!(ctx->cmdclient->flags & CLIENT_CONTROL) &&
+			!(ctx->cmdclient->flags & CLIENT_TERMINAL)) {
 			ctx->error(ctx, "not a terminal");
 			return (-1);
 		}
 
-		overrides =
-		    options_get_string(&s->options, "terminal-overrides");
-		if (tty_open(&ctx->cmdclient->tty, overrides, &cause) != 0) {
-			ctx->error(ctx, "terminal open failed: %s", cause);
-			xfree(cause);
-			return (-1);
+		if (!(ctx->cmdclient->flags & CLIENT_CONTROL)) {
+			overrides =
+			    options_get_string(&s->options, "terminal-overrides");
+			if (tty_open(&ctx->cmdclient->tty, overrides, &cause) != 0) {
+				ctx->error(ctx, "terminal open failed: %s", cause);
+				xfree(cause);
+				return (-1);
+			}
 		}
 
 		if (args_has(self->args, 'r'))
@@ -98,6 +105,10 @@ cmd_attach_session_exec(struct cmd *self, struct cmd_ctx *ctx)
 			server_write_session(s, MSG_DETACH, NULL, 0);
 
 		ctx->cmdclient->session = s;
+		if (ctx->cmdclient->flags & CLIENT_CONTROL) {
+			control_handshake(ctx->cmdclient);
+			control_notify_attached_session_changed(ctx->cmdclient);
+		}
 		session_update_activity(s);
 		server_write_client(ctx->cmdclient, MSG_READY, NULL, 0);
 

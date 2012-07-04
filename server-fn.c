@@ -1,4 +1,4 @@
-/* $Id: server-fn.c 2621 2011-10-23 15:10:22Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -226,6 +226,11 @@ server_lock_client(struct client *c)
 	size_t			 cmdlen;
 	struct msg_lock_data	 lockdata;
 
+	/* Control clients aren't able to lock, but just in case the command
+	 * gets sent, do nothing because it doesn't have a tty. */
+	if (!(c->flags & CLIENT_CONTROL))
+		return;
+
 	if (c->flags & CLIENT_SUSPENDED)
 		return;
 
@@ -293,6 +298,7 @@ server_link_window(struct session *src, struct winlink *srcwl,
 			 * Can't use session_detach as it will destroy session
 			 * if this makes it empty.
 			 */
+			control_notify_window_removed(dstwl->window);
 			dstwl->flags &= ~WINLINK_ALERTFLAGS;
 			winlink_stack_remove(&dst->lastw, dstwl);
 			winlink_remove(&dst->windows, dstwl);
@@ -337,8 +343,8 @@ server_destroy_pane(struct window_pane *wp)
 
 	old_fd = wp->fd;
 	if (wp->fd != -1) {
-		close(wp->fd);
 		bufferevent_free(wp->event);
+		close(wp->fd);
 		wp->fd = -1;
 	}
 
@@ -419,6 +425,9 @@ server_destroy_session(struct session *s)
 		} else {
 			c->last_session = NULL;
 			c->session = s_new;
+			if (c->flags & CLIENT_CONTROL) {
+				control_notify_attached_session_changed(c);
+			}
 			session_update_activity(s_new);
 			server_redraw_client(c);
 		}

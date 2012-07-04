@@ -1,4 +1,4 @@
-/* $Id: cmd-new-window.c 2664 2012-01-20 21:21:32Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -44,7 +44,8 @@ cmd_new_window_exec(struct cmd *self, struct cmd_ctx *ctx)
 	struct args	*args = self->args;
 	struct session	*s;
 	struct winlink	*wl;
-	const char     	*cmd, *cwd;
+	struct client	*c;
+	const char	*cmd, *cwd;
 	char		*cause;
 	int		 idx, last, detached;
 
@@ -84,6 +85,7 @@ cmd_new_window_exec(struct cmd *self, struct cmd_ctx *ctx)
 		 * Can't use session_detach as it will destroy session if this
 		 * makes it empty.
 		 */
+		control_notify_window_removed(wl->window);
 		wl->flags &= ~WINLINK_ALERTFLAGS;
 		winlink_stack_remove(&s->lastw, wl);
 		winlink_remove(&s->windows, wl);
@@ -117,5 +119,11 @@ cmd_new_window_exec(struct cmd *self, struct cmd_ctx *ctx)
 
 	if (args_has(args, 'P'))
 		ctx->print(ctx, "%s:%u", s->name, wl->idx);
+
+	// TODO: Use a -F instead
+	c = cmd_find_client(ctx, NULL);
+	if (c && c->flags & CLIENT_CONTROL)
+		ctx->print(ctx, "%u", wl->window->id);
+
 	return (0);
 }

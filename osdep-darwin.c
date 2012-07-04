@@ -1,4 +1,4 @@
-/* $Id: osdep-darwin.c 2647 2011-12-09 16:37:29Z nicm $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2009 Joshua Elsasser <josh@elsasser.org>
@@ -20,6 +20,7 @@
 #include <sys/sysctl.h>
 
 #include <event.h>
+#include <libproc.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
@@ -52,6 +53,16 @@ osdep_get_name(int fd, unused char *tty)
 char *
 osdep_get_cwd(pid_t pid)
 {
+	static char			wd[PATH_MAX];
+	struct proc_vnodepathinfo	pathinfo;
+	int				ret;
+
+	ret = proc_pidinfo(
+	    pid, PROC_PIDVNODEPATHINFO, 0, &pathinfo, sizeof pathinfo);
+	if (ret == sizeof pathinfo) {
+		strlcpy(wd, pathinfo.pvi_cdir.vip_path, sizeof wd);
+		return (wd);
+	}
 	return (NULL);
 }
 

@@ -1,4 +1,4 @@
-/* $Id: compat.h 2566 2011-07-22 15:10:24Z nicm $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>

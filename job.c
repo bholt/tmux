@@ -1,4 +1,4 @@
-/* $Id: job.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2009 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -123,10 +123,10 @@ job_free(struct job *job)
 
 	if (job->pid != -1)
 		kill(job->pid, SIGTERM);
-	if (job->fd != -1)
-		close(job->fd);
 	if (job->event != NULL)
 		bufferevent_free(job->event);
+	if (job->fd != -1)
+		close(job->fd);
 
 	xfree(job);
 }

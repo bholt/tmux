@@ -1,4 +1,4 @@
-/* $Id: osdep-sunos.c 2647 2011-12-09 16:37:29Z nicm $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2009 Todd Carson <toc@daybefore.net>

@@ -1,4 +1,4 @@
-/* $Id: mode-key.c 2670 2012-01-21 19:38:26Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2008 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -134,7 +134,7 @@ const struct mode_key_cmdstr mode_key_cmdstr_copy[] = {
 /* vi editing keys. */
 const struct mode_key_entry mode_key_vi_edit[] = {
 	{ '\003' /* C-c */,	0, MODEKEYEDIT_CANCEL },
-	{ '\010' /* C-h */, 	0, MODEKEYEDIT_BACKSPACE },
+	{ '\010' /* C-h */,	0, MODEKEYEDIT_BACKSPACE },
 	{ '\011' /* Tab */,	0, MODEKEYEDIT_COMPLETE },
 	{ '\025' /* C-u */,	0, MODEKEYEDIT_DELETELINE },
 	{ '\027' /* C-w */,	0, MODEKEYEDIT_DELETEWORD },
@@ -157,7 +157,7 @@ const struct mode_key_entry mode_key_vi_edit[] = {
 	{ 'W',			1, MODEKEYEDIT_NEXTSPACE },
 	{ 'X',			1, MODEKEYEDIT_BACKSPACE },
 	{ '\003' /* C-c */,	1, MODEKEYEDIT_CANCEL },
-	{ '\010' /* C-h */, 	1, MODEKEYEDIT_BACKSPACE },
+	{ '\010' /* C-h */,	1, MODEKEYEDIT_BACKSPACE },
 	{ '\r',			1, MODEKEYEDIT_ENTER },
 	{ '^',			1, MODEKEYEDIT_STARTOFLINE },
 	{ 'a',			1, MODEKEYEDIT_SWITCHMODEAPPEND },

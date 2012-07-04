@@ -1,4 +1,4 @@
-/* $Id: cmd-save-buffer.c 2620 2011-10-23 15:08:58Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2009 Tiago Cunha <me@tiagocunha.org>

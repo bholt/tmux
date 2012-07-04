@@ -1,4 +1,4 @@
-/* $Id: client.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -29,6 +29,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <termios.h>
 
 #include "tmux.h"
 
@@ -38,6 +39,7 @@ const char     *client_exitmsg;
 int		client_exitval;
 enum msgtype	client_exittype;
 int		client_attached;
+static int	is_control_client;
 
 int		client_connect(char *, int);
 void		client_send_identify(int);
@@ -93,10 +95,34 @@ failed:
 	return (-1);
 }
 
+/* Sleep and then read any pending input. This tries to handle a problem
+ * in control mode where the client is unexpectedly detached while commands it
+ * has sent are on the wire. We'd like to read those commands and throw them
+ * away rather than have them sent to the shell after tmux quits.
+ */
+static void
+read_stray_input(int fd)
+{
+	int	 saved_flags;
+	int	 n;
+	char	 buffer[100];
+
+	sleep(2);
+	saved_flags = fcntl(fd, F_GETFL);
+	fcntl(fd, F_SETFL, saved_flags | O_NONBLOCK);
+	do {
+	    n = read(fd, buffer, sizeof(buffer));
+	    if (n == -1 && errno != EINTR) {
+		break;
+	    }
+	} while (n > 0);
+}
+
 /* Client main loop. */
 int
 client_main(int argc, char **argv, int flags)
 {
+	struct termios		 saved_termios;
 	struct cmd		*cmd;
 	struct cmd_list		*cmdlist;
 	struct msg_command_data	 cmddata;
@@ -154,6 +180,17 @@ client_main(int argc, char **argv, int flags)
 		log_warn("failed to connect to server");
 		return (1);
 	}
+	if (flags & IDENTIFY_CONTROL) {
+		if (!isatty(fileno(stdout))) {
+			/* This test must be performed earlier for control clients because
+			 * the CLIENT_TERMINAL flag is used for more than detecting the presence
+			 * of a terminal and control mode is completely useless without a tty
+			 * because echo can't be disabled. */
+			log_fatalx("not a terminal");
+			return (1);
+		}
+		is_control_client = 1;
+	}
 
 	/* Set process title, log and signals now this is the client. */
 #ifdef HAVE_SETPROCTITLE
@@ -172,6 +209,14 @@ client_main(int argc, char **argv, int flags)
 	if (cmdflags & CMD_SENDENVIRON)
 		client_send_environ();
 	client_send_identify(flags);
+
+	if (is_control_client) {
+		/* Save termios and restore it on exit. Can't count on the
+		 * server to do that because it might crash. */
+		struct termios tio;
+		tcgetattr(fileno(stdout), &tio);
+		saved_termios = tio;
+	}
 
 	/* Send first command. */
 	if (msg == MSG_COMMAND) {
@@ -197,12 +242,26 @@ client_main(int argc, char **argv, int flags)
 
 	/* Print the exit message, if any, and exit. */
 	if (client_attached) {
-		if (client_exitmsg != NULL && !login_shell)
-			printf("[%s]\n", client_exitmsg);
+		if (client_exitmsg != NULL && !login_shell) {
+			if (flags & IDENTIFY_CONTROL) {
+				printf("%%exit %s\n", client_exitmsg);
+				/* Exit messages other than "detached" are
+				 * not client-initiated. */
+				if (strcmp("detached", client_exitmsg))
+					read_stray_input(fileno(stdin));
+			} else {
+				printf("[%s]\n", client_exitmsg);
+			}
+		}
 
 		ppid = getppid();
 		if (client_exittype == MSG_DETACHKILL && ppid > 1)
 			kill(ppid, SIGHUP);
+	}
+	if (is_control_client) {
+		/* Turn off echo in control mode (we only get here if stdout is
+		 * a tty so it's ok to do). */
+		tcsetattr(fileno(stdout), TCSANOW, &saved_termios);
 	}
 	return (client_exitval);
 }
@@ -225,11 +284,6 @@ client_send_identify(int flags)
 	    strlcpy(data.term, term, sizeof data.term) >= sizeof data.term)
 		*data.term = '\0';
 
-	if ((fd = dup(STDIN_FILENO)) == -1)
-		fatal("dup failed");
-	imsg_compose(&client_ibuf,
-	    MSG_IDENTIFY, PROTOCOL_VERSION, -1, fd, &data, sizeof data);
-
 	if ((fd = dup(STDOUT_FILENO)) == -1)
 		fatal("dup failed");
 	imsg_compose(&client_ibuf,
@@ -239,6 +293,12 @@ client_send_identify(int flags)
 		fatal("dup failed");
 	imsg_compose(&client_ibuf,
 	    MSG_STDERR, PROTOCOL_VERSION, -1, fd, NULL, 0);
+
+	/* For control clients, this has to be the last message. */
+	if ((fd = dup(STDIN_FILENO)) == -1)
+		fatal("dup failed");
+	imsg_compose(&client_ibuf,
+	    MSG_IDENTIFY, PROTOCOL_VERSION, -1, fd, &data, sizeof data);
 }
 
 /* Forward entire environment to server. */

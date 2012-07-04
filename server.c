@@ -1,4 +1,4 @@
-/* $Id: server.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -106,7 +106,7 @@ int
 server_start(void)
 {
 	struct window_pane	*wp;
-	int	 		 pair[2];
+	int			 pair[2];
 	char			*cause;
 	struct timeval		 tv;
 	u_int			 i;
@@ -152,6 +152,7 @@ server_start(void)
 	mode_key_init_trees();
 	key_bindings_init();
 	utf8_build();
+	control_init();
 
 	start_time = time(NULL);
 	log_debug("socket path %s", socket_path);
@@ -404,7 +405,7 @@ server_child_exited(pid_t pid, int status)
 	struct window		*w;
 	struct window_pane	*wp;
 	struct job		*job;
-	u_int		 	 i;
+	u_int			 i;
 
 	for (i = 0; i < ARRAY_LENGTH(&windows); i++) {
 		if ((w = ARRAY_ITEM(&windows, i)) == NULL)
@@ -456,7 +457,7 @@ server_second_callback(unused int fd, unused short events, unused void *arg)
 	struct window		*w;
 	struct window_pane	*wp;
 	struct timeval		 tv;
-	u_int		 	 i;
+	u_int			 i;
 
 	if (options_get_number(&global_s_options, "lock-server"))
 		server_lock_server();

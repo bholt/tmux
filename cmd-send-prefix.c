@@ -1,4 +1,4 @@
-/* $Id: cmd-send-prefix.c 2669 2012-01-21 19:36:40Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>

@@ -1,4 +1,4 @@
-/* $Id: layout.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2009 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -92,7 +92,7 @@ layout_print_cell(struct layout_cell *lc, const char *hdr, u_int n)
 	case LAYOUT_LEFTRIGHT:
 	case LAYOUT_TOPBOTTOM:
 		TAILQ_FOREACH(lcchild, &lc->cells, entry)
-		    	layout_print_cell(lcchild, hdr, n + 1);
+			layout_print_cell(lcchild, hdr, n + 1);
 		break;
 	case LAYOUT_WINDOWPANE:
 		break;
@@ -483,6 +483,7 @@ layout_resize_pane(struct window_pane *wp, enum layout_type type, int change)
 	/* Fix cell offsets. */
 	layout_fix_offsets(wp->window->layout_root);
 	layout_fix_panes(wp->window, wp->window->sx, wp->window->sy);
+	control_notify_layout_change(wp->window);
 }
 
 void
@@ -490,7 +491,7 @@ layout_resize_pane_mouse(struct client *c, struct mouse_event *mouse)
 {
 	struct window		*w;
 	struct window_pane	*wp;
-	int		      	 pane_border;
+	int			 pane_border;
 
 	w = c->session->curw->window;
 
@@ -502,14 +503,14 @@ layout_resize_pane_mouse(struct client *c, struct mouse_event *mouse)
 				wp->yoff <= 1 + c->last_mouse.y &&
 				wp->yoff + wp->sy >= c->last_mouse.y) {
 				layout_resize_pane(wp, LAYOUT_LEFTRIGHT,
-								   mouse->x - c->last_mouse.x);
+				    mouse->x - c->last_mouse.x);
 				pane_border = 1;
 			}
 			if (wp->yoff + wp->sy == c->last_mouse.y &&
 				wp->xoff <= 1 + c->last_mouse.x &&
 				wp->xoff + wp->sx >= c->last_mouse.x) {
 				layout_resize_pane(wp, LAYOUT_TOPBOTTOM,
-								   mouse->y - c->last_mouse.y);
+				    mouse->y - c->last_mouse.y);
 				pane_border = 1;
 			}
 		}
@@ -616,7 +617,8 @@ layout_assign_pane(struct layout_cell *lc, struct window_pane *wp)
  * split. This must be followed by layout_assign_pane before much else happens!
  **/
 struct layout_cell *
-layout_split_pane(struct window_pane *wp, enum layout_type type, int size)
+layout_split_pane(struct window_pane *wp, enum layout_type type,
+    int size, int insert_before)
 {
 	struct layout_cell     *lc, *lcparent, *lcnew;
 	u_int			sx, sy, xoff, yoff, size1, size2;
@@ -651,7 +653,11 @@ layout_split_pane(struct window_pane *wp, enum layout_type type, int size)
 
 		/* Create the new child cell. */
 		lcnew = layout_create_cell(lc->parent);
-		TAILQ_INSERT_AFTER(&lc->parent->cells, lc, lcnew, entry);
+		if (insert_before)
+			TAILQ_INSERT_BEFORE(lc, lcnew, entry);
+		else
+			TAILQ_INSERT_AFTER(
+			    &lc->parent->cells, lc, lcnew, entry);
 	} else {
 		/*
 		 * Otherwise create a new parent and insert it.
@@ -672,7 +678,10 @@ layout_split_pane(struct window_pane *wp, enum layout_type type, int size)
 
 		/* Create the new child cell. */
 		lcnew = layout_create_cell(lcparent);
-		TAILQ_INSERT_TAIL(&lcparent->cells, lcnew, entry);
+		if (insert_before)
+			TAILQ_INSERT_HEAD(&lcparent->cells, lcnew, entry);
+		else
+			TAILQ_INSERT_TAIL(&lcparent->cells, lcnew, entry);
 	}
 
 	/* Set new cell sizes.  size is the target size or -1 for middle split,
@@ -727,4 +736,5 @@ layout_close_pane(struct window_pane *wp)
 		layout_fix_offsets(wp->window->layout_root);
 		layout_fix_panes(wp->window, wp->window->sx, wp->window->sy);
 	}
+	control_notify_layout_change(wp->window);
 }

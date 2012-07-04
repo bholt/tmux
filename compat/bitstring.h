@@ -1,4 +1,4 @@
-/* $Id: bitstring.h 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 /*	$OpenBSD: bitstring.h,v 1.5 2003/06/02 19:34:12 millert Exp $	*/
 /*	$NetBSD: bitstring.h,v 1.5 1997/05/14 15:49:55 pk Exp $	*/
 

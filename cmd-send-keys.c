@@ -1,4 +1,4 @@
-/* $Id: cmd-send-keys.c 2666 2012-01-21 19:31:59Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2008 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -31,13 +31,34 @@ int	cmd_send_keys_exec(struct cmd *, struct cmd_ctx *);
 
 const struct cmd_entry cmd_send_keys_entry = {
 	"send-keys", "send",
-	"Rt:", 0, -1,
-	"[-R] [-t target-pane] key ...",
+	"hRt:", 0, -1,
+	"-[R] [-t target-pane] [-h] key ...",
 	0,
 	NULL,
 	NULL,
 	cmd_send_keys_exec
 };
+
+static int
+hextoint(char hex)
+{
+	if (hex >= '0' && hex <= '9') {
+		return hex - '0';
+	}
+	if (hex >= 'a' && hex <= 'f') {
+		return hex - 'a' + 10;
+	}
+	if (hex >= 'A' && hex <= 'F') {
+		return hex - 'A' + 10;
+	}
+	return 0;
+}
+
+static int
+hexdecode(char *hex)
+{
+	return hextoint(hex[0]) * 16 + hextoint(hex[1]);
+}
 
 int
 cmd_send_keys_exec(struct cmd *self, struct cmd_ctx *ctx)
@@ -48,7 +69,9 @@ cmd_send_keys_exec(struct cmd *self, struct cmd_ctx *ctx)
 	struct input_ctx	*ictx;
 	const char		*str;
 	int			 i, key;
+	int			 hex_code;
 
+	hex_code = args_has(args, 'h');
 	if (cmd_find_pane(ctx, args_get(args, 't'), &s, &wp) == NULL)
 		return (-1);
 
@@ -71,8 +94,13 @@ cmd_send_keys_exec(struct cmd *self, struct cmd_ctx *ctx)
 	for (i = 0; i < args->argc; i++) {
 		str = args->argv[i];
 
-		if ((key = key_string_lookup_string(str)) != KEYC_NONE) {
-			    window_pane_key(wp, s, key);
+		if (hex_code) {
+			int arglen = strlen(args->argv[i]);
+			for (int j = 0; j < arglen - 1; j += 2) {
+				window_pane_key(wp, s, hexdecode(args->argv[i] + j));
+			}
+		} else if ((key = key_string_lookup_string(str)) != KEYC_NONE) {
+			window_pane_key(wp, s, key);
 		} else {
 			for (; *str != '\0'; str++)
 			    window_pane_key(wp, s, *str);

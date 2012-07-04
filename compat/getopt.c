@@ -1,4 +1,4 @@
-/* $Id: getopt.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 1987, 1993, 1994
@@ -108,7 +108,7 @@ BSDgetopt(nargc, nargv, ostr)
 				    __progname, BSDoptopt);
 			return (BADCH);
 		}
-	 	else				/* white space */
+		else				/* white space */
 			BSDoptarg = nargv[BSDoptind];
 		place = EMSG;
 		++BSDoptind;

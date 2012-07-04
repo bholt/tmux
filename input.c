@@ -1,4 +1,4 @@
-/* $Id: input.c 2668 2012-01-21 19:33:45Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -690,12 +690,17 @@ input_init(struct window_pane *wp)
 
 	ictx->state = &input_state_ground;
 	ictx->flags = 0;
+
+	ds_init(&ictx->input_since_ground);
 }
 
 /* Destroy input parser. */
 void
 input_free(unused struct window_pane *wp)
 {
+	if (wp) {
+		ds_free(&wp->ictx.input_since_ground);
+	}
 }
 
 /* Parse input. */
@@ -726,6 +731,8 @@ input_parse(struct window_pane *wp)
 
 	buf = EVBUFFER_DATA(evb);
 	len = EVBUFFER_LENGTH(evb);
+
+	control_broadcast_input(wp, buf, len);
 	off = 0;
 
 	/* Parse the input. */
@@ -756,9 +763,18 @@ input_parse(struct window_pane *wp)
 		if (itr->state != NULL) {
 			if (ictx->state->exit != NULL)
 				ictx->state->exit(ictx);
+			if (ictx->state != &input_state_ground &&
+				itr->state == &input_state_ground) {
+				/* Entering ground state. */
+				ds_truncate(&ictx->input_since_ground, 0);
+			}
 			ictx->state = itr->state;
 			if (ictx->state->enter != NULL)
 				ictx->state->enter(ictx);
+		}
+		if (ictx->state != &input_state_ground) {
+			/* Not in ground state, so save input. */
+			ds_appendl(&ictx->input_since_ground, (const char *) &ictx->ch, 1);
 		}
 	}
 
@@ -1036,7 +1052,7 @@ input_csi_dispatch(struct input_ctx *ictx)
 	struct window_pane	       *wp = ictx->wp;
 	struct screen		       *s = sctx->s;
 	struct input_table_entry       *entry;
-	int			 	n, m;
+	int				n, m;
 
 	if (ictx->flags & INPUT_DISCARD)
 		return (0);
@@ -1552,8 +1568,7 @@ input_exit_rename(struct input_ctx *ictx)
 		return;
 	log_debug("%s: \"%s\"", __func__, ictx->input_buf);
 
-	xfree(ictx->wp->window->name);
-	ictx->wp->window->name = xstrdup(ictx->input_buf);
+	window_set_name(ictx->wp->window, ictx->input_buf);
 	options_set_number(&ictx->wp->window->options, "automatic-rename", 0);
 
 	server_status_window(ictx->wp->window);

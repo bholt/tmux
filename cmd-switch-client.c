@@ -1,4 +1,4 @@
-/* $Id: cmd-switch-client.c 2665 2012-01-21 19:30:07Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>

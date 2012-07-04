@@ -1,4 +1,4 @@
-/* $Id: grid.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2008 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -38,11 +38,11 @@
 const struct grid_cell grid_default_cell = { 0, 0, 8, 8, ' ' };
 
 #define grid_put_cell(gd, px, py, gc) do {			\
-	memcpy(&gd->linedata[py].celldata[px], 			\
+	memcpy(&gd->linedata[py].celldata[px],			\
 	    gc, sizeof gd->linedata[py].celldata[px]);		\
 } while (0)
 #define grid_put_utf8(gd, px, py, gc) do {			\
-	memcpy(&gd->linedata[py].utf8data[px], 			\
+	memcpy(&gd->linedata[py].utf8data[px],			\
 	    gc, sizeof gd->linedata[py].utf8data[px]);		\
 } while (0)
 

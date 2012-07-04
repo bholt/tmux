@@ -1,4 +1,4 @@
-/* $Id: cfg.c 2588 2011-08-25 21:14:23Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2008 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -33,8 +33,8 @@
 void printflike2 cfg_print(struct cmd_ctx *, const char *, ...);
 void printflike2 cfg_error(struct cmd_ctx *, const char *, ...);
 
-char	 	       *cfg_cause;
-int     	 	cfg_finished;
+char		       *cfg_cause;
+int			cfg_finished;
 struct causelist	cfg_causes = ARRAY_INITIALIZER;
 
 /* ARGSUSED */

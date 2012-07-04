@@ -1,4 +1,4 @@
-/* $Id: grid-view.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2008 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -94,8 +94,10 @@ grid_view_clear_history(struct grid *gd)
 		return;
 
 	/* Scroll the lines into the history. */
-	for (yy = 0; yy < last; yy++)
+	for (yy = 0; yy < last; yy++) {
+		grid_collect_history(gd);
 		grid_scroll_history(gd);
+	}
 }
 
 /* Clear area. */

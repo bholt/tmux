@@ -1,4 +1,4 @@
-/* $Id: cmd-pipe-pane.c 2628 2011-10-31 13:55:43Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2009 Nicholas Marriott <nicm@users.sourceforge.net>

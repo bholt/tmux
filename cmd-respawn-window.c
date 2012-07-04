@@ -1,4 +1,4 @@
-/* $Id: cmd-respawn-window.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2008 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -48,7 +48,7 @@ cmd_respawn_window_exec(struct cmd *self, struct cmd_ctx *ctx)
 	struct session		*s;
 	struct environ		 env;
 	const char		*cmd;
-	char		 	*cause;
+	char			*cause;
 
 	if ((wl = cmd_find_window(ctx, args_get(args, 't'), &s)) == NULL)
 		return (-1);

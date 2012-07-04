@@ -1,4 +1,4 @@
-/* $Id: cmd-refresh-client.c 2607 2011-10-02 11:33:14Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>

@@ -1,4 +1,4 @@
-/* $Id: layout-custom.c 2553 2011-07-09 09:42:33Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2010 Nicholas Marriott <nicm@users.sourceforge.net>
@@ -67,7 +67,7 @@ layout_dump(struct window *w)
 	return (out);
 }
 
-/* Append information for a single cell. */
+/* Append information for a single cell.  */
 int
 layout_append(struct layout_cell *lc, char *buf, size_t len)
 {
@@ -78,9 +78,13 @@ layout_append(struct layout_cell *lc, char *buf, size_t len)
 
 	if (len == 0)
 		return (-1);
-
-	tmplen = xsnprintf(tmp, sizeof tmp,
-	    "%ux%u,%u,%u", lc->sx, lc->sy, lc->xoff, lc->yoff);
+	if (lc->wp != NULL) {
+		tmplen = xsnprintf(tmp, sizeof tmp, "%ux%u,%u,%u,%u",
+		    lc->sx, lc->sy, lc->xoff, lc->yoff, lc->wp->id);
+	} else {
+		tmplen = xsnprintf(tmp, sizeof tmp, "%ux%u,%u,%u",
+		    lc->sx, lc->sy, lc->xoff, lc->yoff);
+	}
 	if (tmplen > (sizeof tmp) - 1)
 		return (-1);
 	if (strlcat(buf, tmp, len) >= len)
@@ -167,6 +171,9 @@ layout_parse(struct window *w, const char *layout)
 
 	layout_print_cell(lc, __func__, 0);
 
+	/* Notify control clients of the change. */
+	control_notify_layout_change(w);
+
 	return (0);
 
 fail:
@@ -202,7 +209,8 @@ layout_construct(struct layout_cell *lcparent, const char **layout)
 
 	if (!isdigit((u_char) **layout))
 		return (NULL);
-	if (sscanf(*layout, "%ux%u,%u,%u", &sx, &sy, &xoff, &yoff) != 4)
+	if (sscanf(*layout, "%ux%u,%u,%u,%*u", &sx, &sy, &xoff, &yoff) != 5 &&
+	    sscanf(*layout, "%ux%u,%u,%u", &sx, &sy, &xoff, &yoff) != 4)
 		return (NULL);
 
 	while (isdigit((u_char) **layout))
@@ -222,6 +230,11 @@ layout_construct(struct layout_cell *lcparent, const char **layout)
 	(*layout)++;
 	while (isdigit((u_char) **layout))
 		(*layout)++;
+	if (**layout == ',') {
+		(*layout)++;
+		while (isdigit((u_char) **layout))
+			(*layout)++;
+	}
 
 	lc = layout_create_cell(lcparent);
 	lc->sx = sx;

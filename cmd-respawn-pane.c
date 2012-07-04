@@ -1,4 +1,4 @@
-/* $Id: cmd-respawn-pane.c 2638 2011-11-25 13:30:45Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2008 Nicholas Marriott <nicm@users.sourceforge.net>

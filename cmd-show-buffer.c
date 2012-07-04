@@ -1,4 +1,4 @@
-/* $Id: cmd-show-buffer.c 2616 2011-10-23 15:02:20Z tcunha $ */
+/* $Id$ */
 
 /*
  * Copyright (c) 2007 Nicholas Marriott <nicm@users.sourceforge.net>
