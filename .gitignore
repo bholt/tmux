@@ -1,0 +1,16 @@
+*.o
+*.a
+
+# autoconf
+configure
+.deps
+Makefile
+Makefile.in
+aclocal.m4
+config.log
+config.status
+autom4te.cache
+etc/
+
+# executables
+tmux
